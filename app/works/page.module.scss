@@ -1,0 +1,31 @@
+
+
+// WORKS
+
+.works {
+    width: 100vw;
+    height: 100vh;
+    background-color: #272727;
+    background-image: url('/bg.png');
+    background-size: 20px;
+    background-blend-mode:multiply;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+
+    ul {
+        list-style: none;
+        font-size: 5em;
+        font-weight: 100;
+    }
+
+    li:hover {
+        font-style: italic;
+    }
+
+}

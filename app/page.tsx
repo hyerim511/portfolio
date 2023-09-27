@@ -21,7 +21,7 @@ export default function Home() {
               </li>
           </ul>
       </header>
-      <div className="hide"></div>
+      <div className={styles.hide}></div>
     </main>
   )
 }
