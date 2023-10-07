@@ -1,10 +1,19 @@
 'use client'
+import { useRef } from "react";
+import {
+    motion,
+    useScroll,
+    useSpring,
+    useTransform,
+    MotionValue
+} from "framer-motion";
+
 import Image from 'next/image'
-import imageFlowchart from './readvice-2.png'
-import imageDesign from './readvice-3.png'
-import imageDev1 from './dev1.png'
-import imageDev2 from './dev2.png'
-import imageDev3 from './dev3.png'
+import imageFlowchart from './images/readvice-2.png'
+import imageDesign from './images/readvice-3.png'
+import imageDev1 from './images/dev1.png'
+import imageDev2 from './images/dev2.png'
+import imageDev3 from './images/dev3.png'
 
 import WorkTitle from '@/components/WorkTitle'
 import WorkText from '@/components/WorkText'
@@ -15,6 +24,13 @@ import BtnBack from '@/components/BtnBack'
 import styles from './page.module.scss'
 
 export default function Readvice() {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref });
+    const useParallax = (value: MotionValue<number>, distance: number)=> {
+        return useTransform(value, [0, 1], [-distance, distance]);
+    }
+    const y = useParallax(scrollYProgress, 100);
+
     const devTexts = [
             {
                 title: "OOP Paradigm",
@@ -36,16 +52,16 @@ export default function Readvice() {
     return (
         <main className={styles.readvice}>
             <WorkTitle 
-                mode={true} 
+                lightMode={true} 
                 title="readvice"
                 skill={["design","development","php","mysql"]}
             />
             <BtnBack />
             <section className={styles.contentFirst}>
-                <WorkText 
-                    title={`Project Period: May 15 to Jun 8, 2023 \n Team Members: 3 (including myself)`}
-                    paragraph="[readvice] is a user-friendly book data website designed to simplify the book discovery process. Users can effortlessly search for books based on criteria like genre, title, and author. The platform also empowers users to curate their personalized book lists and engage in meaningful discussions by leaving comments on individual books. Leveraging the extensive book database of [goodreads], a renowned book community website, [readvice] offers an enhanced reading experience."
-                />
+                    <WorkText 
+                        title={`Project Period: May 15 to Jun 8, 2023 \n Team Members: 3 (including myself)`}
+                        paragraph="[readvice] is a user-friendly book data website designed to simplify the book discovery process. Users can effortlessly search for books based on criteria like genre, title, and author. The platform also empowers users to curate their personalized book lists and engage in meaningful discussions by leaving comments on individual books. Leveraging the extensive book database of [goodreads], a renowned book community website, [readvice] offers an enhanced reading experience."
+                    />
                 <WorkText 
                     title="Planning" 
                     paragraph="To emphasize simplicity and user-friendliness, we prioritized key functions such as book search and personalized lists. This streamlined approach ensures a seamless and intuitive user experience."
@@ -83,7 +99,7 @@ export default function Readvice() {
                     <li>Enrich user experience with an advanced recommendation algorithm, driven by user behavior analysis.</li>
                 </ul>
             </section>
-            <WorkLink />
+            <WorkLink git={true}/>
         </main>
     )
 }

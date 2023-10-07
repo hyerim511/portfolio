@@ -1,0 +1,72 @@
+@import '../../../variable.scss';
+
+.kavecon {
+    background-color: #000;
+    color: white;
+    height: 100vh;
+    overflow: scroll;
+
+    .contentFirst {
+        width: 100%;
+        height: 240vh;
+        background-image: linear-gradient(180deg, rgba(250, 255, 0, 0.00) 0%, #000 50%), url('/works/kavecon-1.png');
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: 86% 0;
+        position: relative;
+
+        .firstImg {
+            width: 200px;
+            height: 200vh;
+            position: absolute;
+            right: 2%;
+            top: 20vh;
+            background-image: linear-gradient(180deg, rgba(250, 255, 0, 0.00) 0%, #000 61.46%), url('/works/kavecon-2.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .concept {
+            @include flexAlign(space-between, center);
+        }
+
+        .conceptimg {
+            width: 40%;
+            height: 200px;
+            border-radius: 70px;
+            border: 3px solid #57FF79;
+            box-shadow: 0px 0px 17px 0px #57FF79, 0px 0px 54px 0px #57FF79, 0px 4px 14px 0px #57FF79;
+            @include flexCenter;
+            color: #57FF79;
+            font-size: 2em;
+            font-weight: 700;
+            margin-right: 6%;
+            z-index: 999;
+        }
+    }
+
+    .contentSecond {
+        position: relative;
+
+        img {
+            position: absolute;
+            right: 7%;
+            bottom: 0;
+            width: 600px;
+            height: auto;
+        }
+    }
+
+    .contentLast {
+        padding: 6%;
+        @include flexCol(1.2em);
+
+        ul {
+            margin-bottom: 3em;
+        }
+
+        button {
+            background-color: transparent;
+        }
+    }
+}
