@@ -1,0 +1,30 @@
+@mixin flex($gap: 0) {
+    display: flex;
+    gap: $gap;
+}
+
+@mixin flexCol($gap: 0) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@mixin flexCenter($gap: 0) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+}
+
+@mixin flexAlign($justify: left, $align: normal, $gap: 0) {
+    display: flex;
+    gap: $gap;
+    justify-content: $justify;
+    align-items: $align; 
+}
+
+@mixin grid($col:auto, $row:auto) {
+    display: grid;
+    grid-template-columns: $col;
+    grid-template-rows: $row;
+}

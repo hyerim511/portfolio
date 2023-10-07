@@ -1,0 +1,18 @@
+@import '../app/variable.scss';
+
+.back {
+    position: fixed;
+    left: 10px;
+    top: -50px;
+    z-index: 9999;
+    @include flexCol();
+    transition: .4s;
+
+    p {
+        font-weight: 700;
+    }
+}
+
+.back:hover {
+    top: 0;
+}

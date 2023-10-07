@@ -1,7 +1,39 @@
-//   .answer_wrapper {
-//     height: 0;
-//     overflow: hidden;
-//   }
-//   .answer_wrapper.open {
-//     height: auto;
-//   }
+@import '../app/variable.scss';
+
+.contentDev {
+    background-color: #1F1F1F;
+    color: white;
+    height: fit-content;
+    @include grid(repeat(2, 50%));
+
+    .devLeft {
+        padding: 10%;
+        @include flexCol(100px);
+
+        ul {
+            @include flexCol(30px);
+        }
+
+        li {
+            @include flexCol(10px);
+        }
+
+        h5 {
+            @include flex;
+            justify-content: space-between;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        // p {
+        //     font-size: .9em;
+        // }
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        mix-blend-mode: lighten;
+        opacity: .6;
+    }
+}

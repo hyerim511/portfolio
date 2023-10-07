@@ -1,12 +1,52 @@
 'use client'
+import { useState } from 'react';
+import Image from 'next/image'
+import Accordion from '@/components/Accordion'
 import styles from './devSection.module.scss'
 
 export default function DevSection(props: any) {
-    const {devText, index, onToggle, active} = props
+    const [clicked, setClicked] = useState(0)
+    const { devTexts } = props
+    const [image, setImage] = useState(devTexts[0].image)
+    const handleToggle = (index: any) => {
+        if (clicked === index) {
+         return setClicked(0);
+        }
+        setClicked(index);
+        switch (clicked + 1) {
+            case 0: 
+                setImage(devTexts[0].image)
+                break;
+            case 1: 
+                setImage(devTexts[1].image)
+                break;
+            case 2: 
+                setImage(devTexts[2].image)
+                break;
+            default:
+                setImage(devTexts[0].image)
+                break;
+        }
+    }
+    
     return (
-        <li key={index} onClick={onToggle}>
-            <h5>{devText.title}{active ? '-' : '+'}</h5>
-            {active && <p>{devText.paragraph}</p>}
-        </li>
+        <section className={styles.contentDev}>
+            <div className={styles.devLeft}>
+                <h4>Development</h4>
+                <ul>
+                    {
+                        devTexts.map((devText: any, index: any) => 
+                            <Accordion key={index} devText={devText} onToggle={() => handleToggle(index)} active={clicked === index}/>
+                        )
+                    }
+                </ul>
+            </div>
+            <div className={styles.devRight}>
+                <Image
+                    src={image}
+                    alt="readvice-subpage" 
+                />
+            </div>
+        </section>
     )
 }

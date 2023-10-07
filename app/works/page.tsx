@@ -1,8 +1,8 @@
 'use client'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import styles from './page.module.scss'
 import ClearIcon from '@mui/icons-material/Clear';
-import { useRouter } from 'next/navigation'
 
 
 export default function WorkList() {
@@ -15,7 +15,7 @@ export default function WorkList() {
 
     return (
         <main className={styles.works}>
-            <ClearIcon sx={{ fontSize: 80, weight: 100 }} />
+            <ClearIcon sx={{ fontSize: 80 }} />
             <ul>
                 <li><a onClick={(e) => linkTo(e)}>Readvice</a></li>
                 <li><a onClick={(e) => linkTo(e)}>Kavecon</a></li>

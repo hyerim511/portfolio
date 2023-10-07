@@ -1,5 +1,5 @@
 'use client'
-import styles from './WorkTitle.module.scss'
+import styles from './workTitle.module.scss'
 
 export default function WorkText(props: any) {
     return (

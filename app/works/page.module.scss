@@ -1,6 +1,4 @@
-
-
-// WORKS
+@import '../variable.scss';
 
 .works {
     width: 100vw;
@@ -9,23 +7,31 @@
     background-image: url('/bg.png');
     background-size: 20px;
     background-blend-mode:multiply;
-    display: flex;
+    @include flexCenter(4em);
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
     color: white;
     text-align: center;
     text-transform: uppercase;
 
     ul {
-        list-style: none;
         font-size: 5em;
         font-weight: 100;
+        @include flexCol(1em);
     }
 
     li:hover {
         font-style: italic;
+        cursor: pointer;
+    }
+
+    p:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    svg:hover {
+        transform: rotate(45deg);
+        cursor: pointer;
     }
 
 }

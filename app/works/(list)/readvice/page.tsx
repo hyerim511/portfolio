@@ -1,9 +1,4 @@
 'use client'
-import Link from 'next/link'
-import { useState } from 'react';
-
-import styles from './page.module.scss'
-
 import Image from 'next/image'
 import imageFlowchart from './readvice-2.png'
 import imageDesign from './readvice-3.png'
@@ -13,43 +8,28 @@ import imageDev3 from './dev3.png'
 
 import WorkTitle from '@/components/WorkTitle'
 import WorkText from '@/components/WorkText'
+import WorkLink from '@/components/WorkLink'
 import DevSection from '@/components/DevSection'
+import BtnBack from '@/components/BtnBack'
+
+import styles from './page.module.scss'
 
 export default function Readvice() {
-    const [clicked, setClicked] = useState(0)
-    const [image, setImage] = useState(imageDev1)
-    const handleToggle = (index: any) => {
-        if (clicked === index) {
-         return setClicked(0);
-        }
-        setClicked(index);
-        switch (clicked + 1) {
-            case 0: 
-                setImage(imageDev1)
-                break;
-            case 1: 
-                setImage(imageDev2)
-                break;
-            case 2: 
-                setImage(imageDev3)
-                break;
-            default:
-                setImage(imageDev1)
-                break;
-        }
-    }
     const devTexts = [
             {
                 title: "OOP Paradigm",
-                paragraph: "The foundation of the site is built on the Object-Oriented Programming (OOP) paradigm, ensuring scalability and maintainability."
+                paragraph: "The foundation of the site is built on the Object-Oriented Programming (OOP) paradigm, ensuring scalability and maintainability.",
+                image: imageDev1
             },
             {
                 title: "DAO with PDO",
-                paragraph: "We implemented Data Access Object (DAO) using PHP Data Object (PDO) to seamlessly connect with the MySQL database."
+                paragraph: "We implemented Data Access Object (DAO) using PHP Data Object (PDO) to seamlessly connect with the MySQL database.",
+                image: imageDev2
             },
             {
                 title: "HTTP protocol",
-                paragraph: "HTTP requests, including GET and POST, facilitate efficient communication with the database. We also employed SESSION for post-login page control."
+                paragraph: "HTTP requests, including GET and POST, facilitate efficient communication with the database. We also employed SESSION for post-login page control.",
+                image: imageDev3
             }
         ]
 
@@ -60,6 +40,7 @@ export default function Readvice() {
                 title="readvice"
                 skill={["design","development","php","mysql"]}
             />
+            <BtnBack />
             <section className={styles.contentFirst}>
                 <WorkText 
                     title={`Project Period: May 15 to Jun 8, 2023 \n Team Members: 3 (including myself)`}
@@ -84,25 +65,8 @@ export default function Readvice() {
                     alt="readvice-subpage" 
                 />
             </section>
-            <section className={styles.contentDev}>
-                <div className="devLeft">
-                    <h4>Development</h4>
-                    <ul>
-                        {
-                            devTexts.map((devText: any, index) => 
-                                <DevSection key={index} devText={devText} onToggle={() => handleToggle(index)} active={clicked === index}/>
-                            )
-                        }
-                    </ul>
-                </div>
-                <div className="devRight">
-                <Image
-                    src={image}
-                    alt="readvice-subpage" 
-                />
-                </div>
-            </section>
-            <section>
+            <DevSection devTexts={devTexts}/>
+            <section className={styles.contentLast}>
                 <h4>Key Achievements</h4>
                 <ul>
                     <li>Developed a dynamic book data website using PHP, enabling seamless user interaction.</li>
@@ -119,10 +83,7 @@ export default function Readvice() {
                     <li>Enrich user experience with an advanced recommendation algorithm, driven by user behavior analysis.</li>
                 </ul>
             </section>
-            <section>
-                <button><Link href="">See Github</Link></button>
-                <button><Link href="">Any Question?</Link></button>
-            </section>
+            <WorkLink />
         </main>
     )
 }

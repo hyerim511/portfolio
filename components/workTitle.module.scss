@@ -1,7 +1,7 @@
+@import '../app/variable.scss';
+
 .titleLight {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flexAlign(space-between, center);
     padding: 6%;
 
     h1 {
@@ -15,7 +15,6 @@
     }
 
     li {
-        list-style: none;
         padding: 10px 20px;
         background-color: #000000;
         color: white;
@@ -28,9 +27,7 @@
 }
 
 .titleDark {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flexAlign(space-between, center);
     padding: 6%;
     color: white;
 
@@ -45,7 +42,6 @@
     }
 
     li {
-        list-style: none;
         padding: 10px 20px;
         background-color: #fff;
         color: black;
@@ -60,12 +56,30 @@
 .text {
     padding: 20% 6%;
     width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2em;
+    @include flexCol(1.2em);
     line-height: 1.5;
     
     h4 {
         white-space: pre-line;
+    }
+}
+
+.link {
+    padding: 6%;
+    @include flexCol(1.2em);
+
+    button {
+        font-size: 1.1em;
+        width: fit-content;
+    }
+
+    a {
+        @include flex(10px);
+        align-items: center;
+        font-weight: 700;
+    }
+
+    a:hover {
+        transform: translateX(10px);
     }
 }

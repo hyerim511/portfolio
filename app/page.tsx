@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from './page.module.scss'
 
@@ -14,10 +13,9 @@ export default function Home() {
           <ul>
               <li>
                 <Link href="/works">Works</Link>
-                  <a href="#">Works</a>
               </li>
               <li>
-                  <a href="#">Contact me</a>
+                <Link href="/contact">Contact me</Link>
               </li>
           </ul>
       </header>
