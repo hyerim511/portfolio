@@ -1,36 +1,16 @@
 'use client'
 import Image from 'next/image'
-import imageDesign from './images/readvice-3.png'
-import imageDev1 from './images/dev1.png'
-import imageDev2 from './images/dev2.png'
-import imageDev3 from './images/dev3.png'
+import imageDetail from './images/kavecon-3.png'
+import imageCart from './images/kavecon-4.png'
 
 import WorkTitle from '@/components/WorkTitle'
 import WorkText from '@/components/WorkText'
 import WorkLink from '@/components/WorkLink'
-import DevSection from '@/components/DevSection'
 import BtnBack from '@/components/BtnBack'
 
 import styles from './page.module.scss'
 
 export default function Kavecon() {
-    const devTexts = [
-        {
-            title: "OOP Paradigm",
-            paragraph: "The foundation of the site is built on the Object-Oriented Programming (OOP) paradigm, ensuring scalability and maintainability.",
-            image: imageDev1
-        },
-        {
-            title: "DAO with PDO",
-            paragraph: "We implemented Data Access Object (DAO) using PHP Data Object (PDO) to seamlessly connect with the MySQL database.",
-            image: imageDev2
-        },
-        {
-            title: "HTTP protocol",
-            paragraph: "HTTP requests, including GET and POST, facilitate efficient communication with the database. We also employed SESSION for post-login page control.",
-            image: imageDev3
-        }
-    ]
     const pointColor = "#57FF79"
 
     return (
@@ -65,8 +45,9 @@ export default function Kavecon() {
                     </div>
                     <div className={styles.concept}>
                         <WorkText 
-                            title="Concept" 
-                            paragraph="The concept was inspired by stage lights and is integrated throughout the entire site. The client also wanted to change the CI color, so the primary color was applied to the website and branding. The background was also changed from light to dark colors to highlight the content and the concept."
+                            title="Font" 
+                            paragraph="The site caters to both domestic and international users. Users can choose from four different languages (EN, KR, JP, CH), and the default language is English.
+                            In terms of font, Noto Sans CJK was used to cater to all languages without errors, and the font's file size is lighter than Noto Sans. Manrope was used for pointed numbers such as the counter."
                             padding="10%"
                         />
                         <div className={styles.conceptimg}>NEW</div>
@@ -75,15 +56,18 @@ export default function Kavecon() {
             </section>
             <section className={styles.contentSecond}>
                 <WorkText 
-                    title="Concept" 
-                    paragraph="The concept was inspired by stage lights and is integrated throughout the entire site. The client also wanted to change the CI color, so the primary color was applied to the website and branding. The background was also changed from light to dark colors to highlight the content and the concept."
+                    paragraph="On the concert detail page, the previous design used several pages for one concert, making it difficult for users to find the functions they need. The page needed to be reorganized and independent. The concept for this page is the [Concert]. To ensure that the concert is highlighted, the top area has a big title and an image with light. The client wanted to use videos, but some concerts didn't have video content. Therefore, it was sized primarily for video but can also use an image. Users can check information or promotion videos, purchase tickets, or merchandise on a single page. This page was the most crucial part of the renewal project."
                 />
                 <Image
-                    src={imageDesign}
-                    alt="readvice-subpage" 
+                    src={imageDetail}
+                    alt="kavecon-subpage detail" 
+                />
+                <Image
+                    src={imageCart}
+                    alt="kavecon-subpage cart" 
                 />
             </section>
-            <WorkLink color={pointColor} web={true}/>
+            <WorkLink color={pointColor} web={true} url="https://kavecon.com/"/>
         </main>
     )
 }

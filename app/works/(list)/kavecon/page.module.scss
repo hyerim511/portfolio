@@ -5,6 +5,7 @@
     color: white;
     height: 100vh;
     overflow: scroll;
+    overflow-x: hidden;
 
     .contentFirst {
         width: 100%;
@@ -48,11 +49,19 @@
     .contentSecond {
         position: relative;
 
-        img {
+        img:nth-child(2) {
             position: absolute;
-            right: 7%;
-            bottom: 0;
-            width: 600px;
+            right: -7%;
+            top: 0;
+            width: 800px;
+            height: auto;
+        }
+        
+        img:nth-child(3) {
+            position: absolute;
+            right: 10%;
+            top: 80%;
+            width: 800px;
             height: auto;
         }
     }
@@ -63,10 +72,6 @@
 
         ul {
             margin-bottom: 3em;
-        }
-
-        button {
-            background-color: transparent;
         }
     }
 }
