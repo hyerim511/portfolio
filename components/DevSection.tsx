@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState } from 'react'
 import Image from 'next/image'
 import Accordion from '@/components/Accordion'
 import styles from './devSection.module.scss'

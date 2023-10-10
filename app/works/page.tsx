@@ -15,7 +15,9 @@ export default function WorkList() {
 
     return (
         <main className={styles.works}>
-            <ClearIcon sx={{ fontSize: 80 }} />
+            <Link href='/'>
+                <ClearIcon sx={{ fontSize: 80 }} />
+            </Link>
             <ul>
                 <li><a onClick={(e) => linkTo(e)}>Readvice</a></li>
                 <li><a onClick={(e) => linkTo(e)}>Kavecon</a></li>

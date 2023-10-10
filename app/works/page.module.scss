@@ -35,3 +35,20 @@
     }
 
 }
+
+@media screen and (max-width: $mobileView) {
+    .works {
+        ul {
+            font-size: 2em;
+        }
+
+        p {
+            font-size: .8em;
+            line-height: 3;
+        }
+
+        svg {
+            font-size: 3em;
+        }
+    }
+}
