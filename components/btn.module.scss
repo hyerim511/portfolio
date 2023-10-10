@@ -16,3 +16,13 @@
 .back:hover {
     top: 0;
 }
+
+@media screen and (max-width: $mobileView) {
+    .back {
+        top: -30px;
+
+        svg {
+            font-size: 3em;
+        }
+    }
+}

@@ -75,3 +75,42 @@
         }
     }
 }
+
+@media screen and (max-width: $mobileView) {
+    .kavecon {
+        .contentFirst {
+            height: auto;
+            background-image: linear-gradient(180deg, rgba(250, 255, 0, 0.00) 0%, #000 20%), url('/works/kavecon-1.png');
+            
+            .firstImg {
+                width: 100px;
+                right: 2%;
+            }
+            .concept {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .conceptimg {
+                width: 80%;
+                margin-left: 30%;
+            }
+        }
+
+        .contentSecond {
+    
+            img:nth-child(2) {
+                position: relative;
+                right: -15%;
+                top: 100%;
+                width: 100%;
+            }
+            
+            img:nth-child(3) {
+                position: relative;
+                right: 10%;
+                top: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
