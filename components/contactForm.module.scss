@@ -1,0 +1,68 @@
+@import '../app/variable.scss';
+
+.contact {
+    background-color: black;
+    color: white;
+    width: 70vw;
+    height: 80vh;
+    @include flexCenter(10px);
+    flex-direction: column;
+
+    form {
+        @include flexCenter(10px);
+        flex-direction: column;
+        width: 40%;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        border-bottom: 1px solid white;
+        color: white;
+        font-size: 1em;
+    }
+
+    input:focus,
+    textarea:focus {
+        background-color: white;
+        color: black;
+    }
+
+    label {
+        width: 100%;
+        font-size: .7em;
+    }
+
+    textarea {
+        height: 200px;
+        resize: none;
+        border: 1px solid white;
+        font-family: inherit;
+    }
+
+    [type="submit"] {
+        font-size: 1em;
+        width: 80%;
+        margin-top: 20px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    svg {
+        color: white;
+    }
+
+    .text {
+        @include flexCenter(20px);
+        flex-direction: column;
+    }
+
+    .close {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+}

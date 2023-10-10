@@ -1,7 +1,7 @@
 'use client'
 import styles from './workTitle.module.scss'
 import { motion } from "framer-motion"
-import { useRef } from "react";
+import { useRef } from "react"
 
 export default function WorkText(props: any) {
     // const scrollRef = useRef(null)

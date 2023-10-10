@@ -69,15 +69,17 @@
     button {
         font-size: 1.1em;
         width: fit-content;
-    }
-
-    a {
         @include flex(10px);
         align-items: center;
         font-weight: 700;
     }
 
-    a:hover {
+    a {
+        @include flex(10px);
+        align-items: center;
+    }
+
+    button:hover {
         transform: translateX(10px);
     }
 }
