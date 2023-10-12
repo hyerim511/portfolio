@@ -1,0 +1,18 @@
+@import '../../../variable.scss';
+
+.other {
+    background-color: black;
+    color: white;
+
+    svg {
+        color: white;
+        z-index: 999;
+    }
+
+    svg:first-child {
+        left: 0;
+    }
+    svg:last-child {
+        right: 0;
+    }
+}
