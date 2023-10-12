@@ -32,19 +32,23 @@ export default function Other() {
             title: "cosmos, a walk through the cosmos",
             skill: ["Design", "Exhibition Design"],
             link: "https://github.com/hyerim511/",
-            paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur aliquid minima ipsum. Qui iste eligendi, magnam sint sunt cumque harum officia laboriosam unde nihil, illum autem debitis cum fuga natus."
+            paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur aliquid minima ipsum. Qui iste eligendi, magnam sint sunt cumque harum officia laboriosam unde nihil, illum autem debitis cum fuga natus.",
+            image1: imageCosmos1,
+            image2: imageCosmos2
         },
         {
             title: "cosmos, a walk through the cosmos",
             skill: ["Design", "Exhibition Design"],
             link: "https://github.com/hyerim511/",
-            paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur aliquid minima ipsum. Qui iste eligendi, magnam sint sunt cumque harum officia laboriosam unde nihil, illum autem debitis cum fuga natus."
+            paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur aliquid minima ipsum. Qui iste eligendi, magnam sint sunt cumque harum officia laboriosam unde nihil, illum autem debitis cum fuga natus.",
+            image1: imageCosmos1
         },
         {
             title: "cosmos, a walk through the cosmos",
             skill: ["Design", "Exhibition Design"],
             link: "https://github.com/hyerim511/",
-            paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur aliquid minima ipsum. Qui iste eligendi, magnam sint sunt cumque harum officia laboriosam unde nihil, illum autem debitis cum fuga natus."
+            paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur aliquid minima ipsum. Qui iste eligendi, magnam sint sunt cumque harum officia laboriosam unde nihil, illum autem debitis cum fuga natus.",
+            image1: imageCosmos1
         }
     ]
     return (
@@ -59,6 +63,8 @@ export default function Other() {
                             skill={work.skill}
                             link={work.link}
                             paragraph={work.paragraph}
+                            image1={work.image1}
+                            image2={work.image2}
                         />
                     )
                 }

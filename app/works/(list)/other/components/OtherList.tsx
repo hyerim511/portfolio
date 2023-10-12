@@ -13,13 +13,19 @@ export default function OtherList(props: any) {
         <section className={styles.otherList}>
             <div className={styles.image}>
                 <Image
-                    src={imageCosmos}
-                    alt="Cosmos" 
+                    src={props.image1}
+                    alt="Cosmos"
+                    className={styles.mainImage} 
                 />
-                <Image
-                    src={imageCosmos2}
-                    alt="Cosmos" 
-                />
+                {props.image2 ? 
+                    <Image
+                        src={props.image2}
+                        alt="Cosmos" 
+                        className={styles.subImage}
+                    />
+                    : <span></span>
+                }
+                
                 <div className={styles.dim}></div>
             </div>
             <div className={styles.information}>
