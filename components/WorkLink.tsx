@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import styles from './workTitle.module.scss'
 import ArrowRight from '@mui/icons-material/KeyboardDoubleArrowRight';

@@ -1,6 +1,6 @@
 @import '../variable.scss';
 
-.works {
+.contact {
     width: 100vw;
     height: 100vh;
     background-color: #272727;
@@ -21,12 +21,12 @@
 
     li:hover {
         font-style: italic;
+        text-transform: lowercase;
         cursor: pointer;
     }
 
-    p:hover {
+    span {
         text-decoration: underline;
-        cursor: pointer;
     }
 
     svg:hover {
