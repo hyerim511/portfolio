@@ -15,8 +15,9 @@
         height: 100%;
 
         .mainImage {
-            width: 40vw;
-            height: auto;
+            width: auto;
+            min-width: 35vw;
+            max-height: 90vh;
             position: absolute;
             bottom: 0;
             right: 6%;
@@ -30,6 +31,25 @@
             z-index: -99;
             right: 35%;
             opacity: .8;
+        }
+
+        .verticalImage {
+            position: absolute;
+            top: 6%;
+            left: 10%;
+            width: 45vw;
+            height: auto;
+            z-index: -99;
+            opacity: .8;
+        }
+
+        .logoImage {
+            position: absolute;
+            top: 30%;
+            right: 10%;
+            width: 40vw;
+            height: auto;
+            z-index: 99;
         }
 
         .dim {
@@ -84,6 +104,45 @@
         svg {
             color: black;
             @include flexCenter;
+        }
+    }
+}
+
+@media screen and (max-width: $mobileView) {
+    .otherList {
+
+        .image {
+            .mainImage {
+                width: 100%;
+                height: auto;
+                top: 0;
+                right: 0;
+            }
+            .subImage {
+                display: none;
+            }
+            .dim {
+                background: linear-gradient(180deg, rgba(250, 255, 0, 0.00) 0%, #000 40%);
+            }
+        }
+
+        .information {
+            width: 80%;
+
+            h1 {
+                font-size: 2em;
+            }
+            ul {
+                flex-direction: column;
+            }
+            li {
+                width: fit-content;
+                margin: 0;
+            }
+            li:last-child {
+                margin: 0;
+                margin-top: 10px;
+            }
         }
     }
 }

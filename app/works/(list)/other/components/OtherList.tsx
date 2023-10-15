@@ -3,29 +3,40 @@ import Image from 'next/image'
 import Link from 'next/link'
 import LinkIcon from '@mui/icons-material/Link';
 
-import imageCosmos from './../images/cosmos-1.jpeg'
-import imageCosmos2 from './../images/cosmos-2.jpeg'
-
 export default function OtherList(props: any) {
     const skill = props.skill
 
     return (
         <section className={styles.otherList}>
             <div className={styles.image}>
-                <Image
-                    src={props.image1}
-                    alt="Cosmos"
-                    className={styles.mainImage} 
-                />
-                {props.image2 ? 
+                {props.image1 && 
+                    <Image
+                        src={props.image1}
+                        alt="Cosmos"
+                        className={styles.mainImage} 
+                    />
+                }
+                {props.image2 && 
                     <Image
                         src={props.image2}
                         alt="Cosmos" 
                         className={styles.subImage}
                     />
-                    : <span></span>
                 }
-                
+                {props.image3 && 
+                    <Image
+                        src={props.image3}
+                        alt="Cosmos" 
+                        className={styles.verticalImage}
+                    />
+                }
+                {props.imageLogo && 
+                    <Image
+                        src={props.imageLogo}
+                        alt="Cosmos" 
+                        className={styles.logoImage}
+                    />
+                }
                 <div className={styles.dim}></div>
             </div>
             <div className={styles.information}>
