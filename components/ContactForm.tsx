@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import styles from './contactForm.module.scss'
+import styles from '@styles/components/contactForm.module.scss'
 import ClearIcon from '@mui/icons-material/Clear'
 import emailjs from '@emailjs/browser'
 

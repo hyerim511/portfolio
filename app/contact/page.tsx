@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import styles from './page.module.scss'
+import styles from '@styles/contact.module.scss'
 import ClearIcon from '@mui/icons-material/Clear';
 
 

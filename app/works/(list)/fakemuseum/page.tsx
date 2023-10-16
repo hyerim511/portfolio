@@ -2,20 +2,16 @@
 import { useRef } from "react";
 
 import Image from 'next/image'
-// import imageFlowchart from './images/readvice-2.png'
-// import imageDesign from './images/readvice-3.png'
-// import imageDev1 from './images/dev1.png'
-// import imageDev2 from './images/dev2.png'
-// import imageDev3 from './images/dev3.png'
+
 import Link from 'next/link'
 
-import WorkTitle from '@/components/WorkTitle'
-import WorkText from '@/components/WorkText'
-import WorkLink from '@/components/WorkLink'
-import DevSection from '@/components/DevSection'
-import BtnBack from '@/components/BtnBack'
+import WorkTitle from '@components/WorkTitle'
+import WorkText from '@components/WorkText'
+import WorkLink from '@components/WorkLink'
+import DevSection from '@components/DevSection'
+import BtnBack from '@components/BtnBack'
 
-import styles from './page.module.scss'
+import styles from '@styles/works/fake.module.scss'
 
 export default function FakeMuseum() {
     // const pointColor = "#000"

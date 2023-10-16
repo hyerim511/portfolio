@@ -1,5 +1,5 @@
 'use client'
-import styles from './workTitle.module.scss'
+import styles from '@styles/components/workLayout.module.scss'
 import { motion } from "framer-motion"
 import { useRef } from "react"
 

@@ -1,5 +1,5 @@
 'use client'
-import styles from './workTitle.module.scss'
+import styles from '@styles/components/workLayout.module.scss'
 
 export default function WorkTitle(props: any) {
     const lightMode = props.lightMode

@@ -1,4 +1,4 @@
-@import '../app/variable.scss';
+@import './../variable.scss';
 
 .titleLight {
     @include flexAlign(space-between, center);

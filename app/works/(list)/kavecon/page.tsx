@@ -1,14 +1,14 @@
 'use client'
 import Image from 'next/image'
-import imageDetail from './images/kavecon-3.png'
-import imageCart from './images/kavecon-4.png'
+import imageDetail from '@public/works/kavecon/kavecon-3.png'
+import imageCart from '@public/works/kavecon/kavecon-4.png'
 
-import WorkTitle from '@/components/WorkTitle'
-import WorkText from '@/components/WorkText'
-import WorkLink from '@/components/WorkLink'
-import BtnBack from '@/components/BtnBack'
+import WorkTitle from '@components/WorkTitle'
+import WorkText from '@components/WorkText'
+import WorkLink from '@components/WorkLink'
+import BtnBack from '@components/BtnBack'
 
-import styles from './page.module.scss'
+import styles from '@styles/works/kavecon.module.scss'
 
 export default function Kavecon() {
     const pointColor = "#57FF79"

@@ -1,7 +1,7 @@
-@import '../../../variable.scss';
+@import './../variable.scss';
 
-.jewelry {
-    background-color: #C8BDAB;
+.fakemuseum {
+    background: linear-gradient(180deg, #FFF 0%, #FFE8A5 100%);
     height: 100vh;
     overflow: scroll;
 

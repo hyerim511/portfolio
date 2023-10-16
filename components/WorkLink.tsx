@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import styles from './workTitle.module.scss'
+import styles from '@styles/components/workLayout.module.scss'
 import ArrowRight from '@mui/icons-material/KeyboardDoubleArrowRight';
 import Contact from './ContactForm'
 import Popup from 'reactjs-popup'

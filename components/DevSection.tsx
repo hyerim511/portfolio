@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Accordion from '@/components/Accordion'
-import styles from './devSection.module.scss'
+import styles from '@styles/components/devSection.module.scss'
 
 export default function DevSection(props: any) {
     const [clicked, setClicked] = useState(0)

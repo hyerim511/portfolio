@@ -1,4 +1,4 @@
-import styles from './otherList.module.scss'
+import styles from '@styles/components/otherList.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import LinkIcon from '@mui/icons-material/Link';

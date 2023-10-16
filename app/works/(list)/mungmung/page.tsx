@@ -1,11 +1,11 @@
 import Image from 'next/image'
 
-import WorkTitle from '@/components/WorkTitle'
-import WorkText from '@/components/WorkText'
-import WorkLink from '@/components/WorkLink'
-import BtnBack from '@/components/BtnBack'
+import WorkTitle from '@components/WorkTitle'
+import WorkText from '@components/WorkText'
+import WorkLink from '@components/WorkLink'
+import BtnBack from '@components/BtnBack'
 
-import styles from './page.module.scss'
+import styles from '@styles/works/mung.module.scss'
 
 export default function Mungmung() {
     const pointColor = "#fff"
