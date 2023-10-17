@@ -36,7 +36,7 @@ export default function ContactForm(props: any) {
                 : 
                 <div className={styles.text}>
                     <p style={{fontSize: "3em"}}>Thanks!</p>
-                    <p>I'll answer as soon as possible :)</p>
+                    <p>I&apos;ll answer as soon as possible :)</p>
                 </div>
             }
         </div>

@@ -66,7 +66,7 @@ export default function JewelryLane() {
                 <ul>
                     <li>Developed product listing pages and individual product detail pages with API integration.</li>
                     <li>Implemented advanced features, including filtering, searching, and sorting functions for enhanced user experience.</li>
-                    <li>Designed and integrated a user-friendly 'Add to Cart' functionality.</li>
+                    <li>Designed and integrated a user-friendly &lsquo;Add to Cart&rsquo; functionality.</li>
                     <li>Stored booking data efficiently within the API for streamlined management.</li>
                     <li>Ensured a responsive layout with a mobile navigation system for an optimized user interface.</li>
                 </ul>

@@ -43,7 +43,7 @@ export default function OtherList(props: any) {
                 <h1>{props.title}</h1>
                 <ul>
                     {
-                        skill.map((skill: string) => <li>{skill}</li>)
+                        skill.map((skill: string) => <li key={skill}>{skill}</li>)
                     }
                     <li><Link href={props.link} target='_blank'><LinkIcon /></Link></li>
                 </ul>

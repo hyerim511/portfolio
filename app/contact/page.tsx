@@ -23,7 +23,7 @@ export default function Contact() {
             </ul>
             <div>
                 <p>My name is Hyerim <span>Haley</span> Kim</p>
-                <p>I'm in <span>Vancouver</span> now!</p>
+                <p>I&apos;m in <span>Vancouver</span> now!</p>
                 <p>I use Next.js with TypeScript and SCSS for this site</p>
             </div>
         </main>

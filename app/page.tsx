@@ -32,7 +32,7 @@ export default function Home() {
         </div>
         :
         <div className={styles.maintext} style={{fontFamily: newFont}}>
-          <h1>My name is<br />Hyerim<br />I'm a<br />Graphic Designer</h1>
+          <h1>My name is<br />Hyerim<br />I&apos;m a<br />Graphic Designer</h1>
           <h2><br />Haley<br /><br />Web Developer</h2>
         </div>
       }
