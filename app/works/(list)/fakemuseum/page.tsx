@@ -19,7 +19,7 @@ export default function FakeMuseum() {
             <WorkTitle 
                 lightMode={true} 
                 title="fake museum"
-                skill={["design","development","javascript"]}
+                skill={["development","javascript","UI/UX design"]}
             />
             <BtnBack />
             <section className={styles.content}>
@@ -35,7 +35,7 @@ export default function FakeMuseum() {
                 />
                 <WorkText 
                     title={`Project Period: Oct 28 - Nov 6, 2022`}
-                    paragraph={<span><Link href="http://www.fakemuseum.kr/">fAKE mUSEUM(Kang Jiyun, Lim Nare)</Link> <br />Graphic Design by <Link href="http://www.fakemuseum.kr/">PAPER COMPANY</Link></span>}
+                    paragraph={<span><Link href="http://www.fakemuseum.kr/">fAKE mUSEUM(Kang Jiyun, Lim Nare)</Link> <br />Graphic Design by <Link href="http://www.behance.net/papercompany/">PAPER COMPANY</Link></span>}
                     padding="60%"
                 />
                 <WorkText 

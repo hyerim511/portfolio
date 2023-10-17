@@ -18,7 +18,7 @@ export default function Kavecon() {
             <WorkTitle 
                 darkMode={true} 
                 title="kavecon"
-                skill={["design"]}
+                skill={["UI/UX design"]}
                 color={pointColor}
             />
             <BtnBack />

@@ -39,7 +39,7 @@ export default function JewelryLane() {
             <WorkTitle 
                 lightMode={true} 
                 title="jewely lane"
-                skill={["design","development","vue.js","api"]}
+                skill={["development","vue.js","api","UI/UX design"]}
                 color={pointColor}
             />
             <BtnBack />

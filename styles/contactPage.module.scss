@@ -29,6 +29,10 @@
         text-decoration: underline;
     }
 
+    small {
+        font-size: .8em;
+    }
+
     svg:hover {
         transform: rotate(45deg);
         cursor: pointer;
@@ -44,7 +48,15 @@
 
         p {
             font-size: .8em;
-            line-height: 3;
+            line-height: 2;
+        }
+
+        small {
+            font-size: .6em;
+            display: inline-block;
+            width: 80vw;
+            line-height: 1.4;
+            margin-top: 1em;
         }
 
         svg {

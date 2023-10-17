@@ -27,7 +27,14 @@ export default function OtherList(props: any) {
                     <Image
                         src={props.image3}
                         alt={props.title}
-                        className={styles.verticalImage}
+                        className={styles.horizontalImage}
+                    /> : null
+                }
+                {props.image4 ? 
+                    <Image
+                        src={props.image4}
+                        alt={props.title}
+                        className={styles.horizontalMainImage}
                     /> : null
                 }
                 {props.imageLogo ? 

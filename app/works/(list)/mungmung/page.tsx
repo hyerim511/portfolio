@@ -31,7 +31,7 @@ export default function Mungmung() {
             <WorkTitle 
                 darkMode={true} 
                 title="mungmung"
-                skill={["design"]}
+                skill={["Graphic design", "UI/UX design"]}
             />
             <BtnBack />
             <section className={styles.content}>

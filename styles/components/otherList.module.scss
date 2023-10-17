@@ -16,8 +16,7 @@
 
         .mainImage {
             width: auto;
-            min-width: 35vw;
-            max-height: 90vh;
+            height: 90vh;
             position: absolute;
             bottom: 0;
             right: 6%;
@@ -33,14 +32,21 @@
             opacity: .8;
         }
 
-        .verticalImage {
+        .horizontalImage {
             position: absolute;
-            top: 6%;
-            left: 10%;
+            bottom: 6%;
+            right: 2%;
             width: 45vw;
             height: auto;
+        }
+
+        .horizontalMainImage {
+            position: absolute;
+            top: 6%;
+            right: 5%;
+            width: 60vw;
+            height: auto;
             z-index: -99;
-            opacity: .8;
         }
 
         .logoImage {
@@ -111,13 +117,13 @@
 @media screen and (max-width: $mobileView) {
     .otherList {
         .image {
-            .mainImage {
+            .mainImage, .horizontalMainImage {
                 width: 100%;
                 height: auto;
                 top: 0;
                 right: 0;
             }
-            .subImage {
+            .subImage, .horizontalImage {
                 display: none;
             }
             .logoImage {

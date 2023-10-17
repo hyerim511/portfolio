@@ -38,7 +38,7 @@ export default function Readvice() {
             <WorkTitle 
                 darkMode={false} 
                 title="readvice"
-                skill={["design","development","php","mysql"]}
+                skill={["development","php","mysql","UI/UX design"]}
             />
             <BtnBack />
             <section className={styles.contentFirst}>

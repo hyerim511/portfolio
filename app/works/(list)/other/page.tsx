@@ -31,7 +31,6 @@ import styles from '@styles/works/other.module.scss'
 
 export default function Other() {
     const settings = {
-        // dots: true,
         className: "center",
         centerMode: true,
         infinite: true,
@@ -56,14 +55,14 @@ export default function Other() {
             skill: ["Graphic Design", "Poster Design"],
             link: "https://www.facebook.com/sayuji301/",
             paragraph: '[The Sideways Glance] is an exhibition that aims to reevaluate societal and personal blind spots that often go unnoticed unless consciously observed. Through unconventional perspectives, it sensitizes us to the errors and illusions in thought patterns that can easily result in exclusion from societal structures, highlighting the significance of a microscopic examination of what is commonly referred to as "systems." In my capacity, I was responsible for designing the poster. The poster was created using small dots in four different colours. Interestingly, when observed from a distance, it appears as a black and white poster. However, as they approach the poster, the colours gradually become visible.',
-            image1: imageSideways
+            image4: imageSideways
         },
         {
             title: "MilkT AI Listening",
             skill: ["UI/UX Design", "Graphic Design"],
             link: "https://high.milkt.co.kr/EventNew/20221123_puzzle/20221123_puzzle.aspx/",
             paragraph: '[MilkT AI Listening] is an online study program designed for high school students. Users have the opportunity to engage in study sessions and test their knowledge through engaging puzzle games. Additionally, the platform provides charts that allow users to track their progress and monitor their study journey. In my role, I was primarily responsible for UI/UX design, with a particular focus on the visual elements. I also contributed to the graphic design aspects of the puzzle games. Leveraging their unique character design, I incorporated these characters into the works of famous artists, such as Van Gogh, Edgar Degas, Raffaello, and Kim Hongdo.',
-            image1: imageMilkt1,
+            image4: imageMilkt1,
             image3: imageMilkt2
         },
         {
@@ -146,6 +145,7 @@ export default function Other() {
                             image1={work.image1}
                             image2={work.image2}
                             image3={work.image3}
+                            image4={work.image4}
                             imageLogo={work.imageLogo}
                         />
                     )
