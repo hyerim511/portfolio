@@ -1,13 +1,4 @@
 'use client'
-import { useRef } from "react";
-import {
-    motion,
-    useScroll,
-    useSpring,
-    useTransform,
-    MotionValue
-} from "framer-motion";
-
 import Image from 'next/image'
 import imageFlowchart from '@public/works/readvice/readvice-2.png'
 import imageDesign from '@public/works/readvice/readvice-3.png'
@@ -24,13 +15,6 @@ import BtnBack from '@components/BtnBack'
 import styles from '@styles/works/readvice.module.scss'
 
 export default function Readvice() {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({ target: ref });
-    const useParallax = (value: MotionValue<number>, distance: number)=> {
-        return useTransform(value, [0, 1], [-distance, distance]);
-    }
-    const y = useParallax(scrollYProgress, 100);
-
     const devTexts = [
             {
                 title: "OOP Paradigm",
@@ -52,7 +36,7 @@ export default function Readvice() {
     return (
         <main className={styles.readvice}>
             <WorkTitle 
-                lightMode={true} 
+                darkMode={false} 
                 title="readvice"
                 skill={["design","development","php","mysql"]}
             />
@@ -99,7 +83,7 @@ export default function Readvice() {
                     <li>Enrich user experience with an advanced recommendation algorithm, driven by user behavior analysis.</li>
                 </ul>
             </section>
-            <WorkLink git={true}/>
+            <WorkLink git="https://github.com/DYagmur/ReadVice/" />
         </main>
     )
 }

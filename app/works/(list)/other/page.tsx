@@ -41,18 +41,6 @@ export default function Other() {
         speed: 500,
         nextArrow: <ChevronRightIcon />,
         prevArrow: <ChevronLeftIcon />,
-        // responsive: [
-        //     {
-        //       breakpoint: 700,
-        //       settings: {
-        //         slidesToShow: 2,
-        //         slidesToScroll: 1,
-        //         infinite: true,
-        //         vertical: true,
-        //         verticalSwiping: true
-        //       }
-        //     },
-        // ]
     }
     const workList = [
         {

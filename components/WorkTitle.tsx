@@ -2,10 +2,10 @@
 import styles from '@styles/components/workLayout.module.scss'
 
 export default function WorkTitle(props: any) {
-    const lightMode = props.lightMode
+    const darkMode = props.darkMode
     const skill = props.skill
     return (
-        <div className={lightMode ? styles.titleLight : styles.titleDark} style={{color: props.color}}>
+        <div className={darkMode ? styles.titleDark : styles.titleLight} style={{color: props.color || "inherit"}}>
                 <h1>{props.title}</h1>
                 <ul>
                     {

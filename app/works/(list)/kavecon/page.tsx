@@ -16,7 +16,7 @@ export default function Kavecon() {
     return (
         <main className={styles.kavecon}>
             <WorkTitle 
-                lightMode={false} 
+                darkMode={true} 
                 title="kavecon"
                 skill={["design"]}
                 color={pointColor}
@@ -50,7 +50,9 @@ export default function Kavecon() {
                             In terms of font, Noto Sans CJK was used to cater to all languages without errors, and the font's file size is lighter than Noto Sans. Manrope was used for pointed numbers such as the counter."
                             padding="10%"
                         />
-                        <div className={styles.conceptimg}>NEW</div>
+                        <div>
+                            <p><span className={styles.fontNoto}>Noto Sans CJK</span><br /><span className={styles.fontManrope}>Manrope</span></p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -67,7 +69,7 @@ export default function Kavecon() {
                     alt="kavecon-subpage cart" 
                 />
             </section>
-            <WorkLink color={pointColor} web={true} url="https://kavecon.com/"/>
+            <WorkLink color={pointColor} web="https://kavecon.com/" />
         </main>
     )
 }

@@ -16,15 +16,15 @@ export default function ContactForm(props: any) {
                 setSent(false)
             }, (error) => {
                 console.log(error.text)
-            });
-        };
+            })
+        }
     return (
         <div className={styles.contact}>
             <div onClick={props.close} className={styles.close}>
                 <ClearIcon sx={{ fontSize: 40 }} />
             </div>
             {isSended ? 
-                    <form ref={form} onSubmit={sendEmail}>
+                <form ref={form} onSubmit={sendEmail}>
                     <label htmlFor="user_name">Name</label>
                     <input type="text" name="user_name" id="user_name" />
                     <label htmlFor="user_email">Email</label>
@@ -37,7 +37,8 @@ export default function ContactForm(props: any) {
                 <div className={styles.text}>
                     <p style={{fontSize: "3em"}}>Thanks!</p>
                     <p>I'll answer as soon as possible :)</p>
-                </div>}
+                </div>
+            }
         </div>
     )
 }

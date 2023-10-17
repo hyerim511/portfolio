@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import SouthIcon from '@mui/icons-material/South';
+import SouthIcon from '@mui/icons-material/South'
 import styles from '@styles/components/btn.module.scss'
 
 export default function BtnBack() {

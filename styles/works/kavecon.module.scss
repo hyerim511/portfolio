@@ -1,4 +1,5 @@
 @import './../variable.scss';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Noto+Sans+KR:wght@700&display=swap');
 
 .kavecon {
     background-color: #000;
@@ -29,20 +30,39 @@
 
         .concept {
             @include flexAlign(space-between, center);
+
+            div:last-child {
+                @include flexCenter;
+                height: 200px;
+                width: 40%;
+                margin-right: 6%;
+                font-weight: 700;
+                z-index: 999;
+                font-size: 2.5em;
+                color: #57FF79;
+                line-height: 1.6;
+                text-align: center;
+                text-transform: uppercase;
+            }
         }
 
         .conceptimg {
-            width: 40%;
-            height: 200px;
             border-radius: 70px;
             border: 3px solid #57FF79;
             box-shadow: 0px 0px 17px 0px #57FF79, 0px 0px 54px 0px #57FF79, 0px 4px 14px 0px #57FF79;
-            @include flexCenter;
-            color: #57FF79;
-            font-size: 2em;
-            font-weight: 700;
-            margin-right: 6%;
-            z-index: 999;
+        }
+
+        span {
+            letter-spacing: 5px;
+            text-shadow: 0px 0px 3px 3px #57FF79;
+        }
+
+        .fontNoto {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .fontManrope {
+            font-family: 'Manrope', sans-serif;
         }
     }
 

@@ -10,10 +10,10 @@ export default function DevSection(props: any) {
     const [image, setImage] = useState(devTexts[0].image)
     const handleToggle = (index: any) => {
         if (clicked === index) {
-         return setClicked(0);
+         return setClicked(0)
         }
         setClicked(index);
-        switch (clicked + 1) {
+        switch (index) {
             case 0: 
                 setImage(devTexts[0].image)
                 break;

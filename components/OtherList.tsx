@@ -9,33 +9,33 @@ export default function OtherList(props: any) {
     return (
         <section className={styles.otherList}>
             <div className={styles.image}>
-                {props.image1 && 
+                {props.image1 ? 
                     <Image
                         src={props.image1}
-                        alt="Cosmos"
+                        alt={props.title}
                         className={styles.mainImage} 
-                    />
+                    /> : null
                 }
-                {props.image2 && 
+                {props.image2 ? 
                     <Image
                         src={props.image2}
-                        alt="Cosmos" 
+                        alt={props.title}
                         className={styles.subImage}
-                    />
+                    /> : null
                 }
-                {props.image3 && 
+                {props.image3 ? 
                     <Image
                         src={props.image3}
-                        alt="Cosmos" 
+                        alt={props.title}
                         className={styles.verticalImage}
-                    />
+                    /> : null
                 }
-                {props.imageLogo && 
+                {props.imageLogo ? 
                     <Image
                         src={props.imageLogo}
-                        alt="Cosmos" 
+                        alt={props.title}
                         className={styles.logoImage}
-                    />
+                    /> : null
                 }
                 <div className={styles.dim}></div>
             </div>

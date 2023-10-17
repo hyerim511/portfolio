@@ -59,7 +59,10 @@
     @include flexCol(1.2em);
     line-height: 1.5;
     white-space: pre-line;
-    z-index: 9999;
+    
+    h4, p {
+        z-index: 9999;
+    }
 }
 
 .link {
