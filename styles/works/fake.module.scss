@@ -37,26 +37,15 @@
 }
 
 @media screen and (max-width: $mobileView) {
-    .readvice {
-        height: 160vh;
-        .contentFirst {
-            background-position: 240% 0;
-            background-size: 90%;
-            // height: 100%;
-            background-image: linear-gradient(180deg, rgba(250, 255, 0, 0.00) 0%, #FAFF00 20%), url('/works/readvice-1.png');
-
-            img {
-                top: 100vh;
-                width: 90%;
-                height: auto;
+    .fakemuseum {
+        .content {
+            .imagePopup {
+                top: 25%;
+                right: -5%;
+                width: 60%;
             }
-        }
-        
-        .contentSecond  {
-            img {
-                width: 90%;
-                top: -30%;
-                right: -10%;
+            .requirements {
+                padding-right: 6%;
             }
         }
     }

@@ -100,5 +100,68 @@
 }
 
 @media screen and (max-width: $mobileView) {
+    .mungmung {
+        background-size: 100%;
 
+        .content {
+            img {
+                border-radius: 15px;
+            }
+
+            .imageList {
+                justify-content: center;
+                img {
+                    width: 20%;
+                }
+            }
+
+            .first {
+                .mainFirst {
+                    right: 5%;
+                    width: 60%;
+                }
+                .mainSecond {
+                    right: -10%;
+                    top: 65%;
+                    width: 40%;
+                }
+            }
+
+            .gameplay {
+                .imageList {
+                    justify-content: right;
+                }
+            }
+
+            .initial {
+                flex-direction: column;
+            }
+
+            .animation {
+                flex-direction: column;
+                align-items: flex-start;
+                img {
+                    width: 40%;
+                    align-self: flex-end;
+                    margin-right: 5%;
+                }
+            }
+
+            .second {
+                img {
+                    width: 60%;
+                    right: 5%;
+                    top: 70%;
+                }
+            }
+
+            .villanets {
+                img {
+                    right: 0;
+                    top: 55%;
+                    width: 40%;
+                }
+            }
+        }
+    }
 }

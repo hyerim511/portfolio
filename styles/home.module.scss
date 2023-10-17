@@ -6,11 +6,6 @@
 
     h1 {
         text-align: center;
-        // font-family: 'Permanent Marker', cursive;
-        // font-family: 'Kenia', cursive;
-        // font-family: 'Rock Salt', cursive;
-        // font-family: 'Homemade Apple', cursive;
-        // font-family: 'Nothing You Could Do', cursive;
         font-size: 8em;
         color: #000000;
         line-height: 1em;
@@ -19,8 +14,6 @@
     
     h2 {
         text-align: center;
-        /* font-family: 'Rock Salt', cursive; */
-        // font-family: 'Permanent Marker', cursive;
         position: absolute;
         font-size: 8em;
         line-height: 1em;
@@ -38,14 +31,10 @@
     width: 30%;
 
     li {
-        // background-color: black;
-        // border: 2px solid black;
-        // margin-top: 10px;
         text-align: right;
     }
     
     a {
-        // color: white;
         width: 100%;
         display: block;
         font-size: 2.5em;
@@ -86,7 +75,11 @@
     .mainHeader {
         a {
             font-size: 1.5em;
-            line-height: 3;
+            line-height: 2.5;
         }
+    }
+
+    .btnChange {
+        font-size: 1.5em;
     }
 }

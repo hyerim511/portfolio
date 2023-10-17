@@ -110,7 +110,6 @@
 
 @media screen and (max-width: $mobileView) {
     .otherList {
-
         .image {
             .mainImage {
                 width: 100%;
@@ -120,6 +119,10 @@
             }
             .subImage {
                 display: none;
+            }
+            .logoImage {
+                width: 60%;
+                top: 20%;
             }
             .dim {
                 background: linear-gradient(180deg, rgba(250, 255, 0, 0.00) 0%, #000 40%);
@@ -142,6 +145,13 @@
             li:last-child {
                 margin: 0;
                 margin-top: 10px;
+            }
+
+            p {
+                height: 30vh;
+                overflow: scroll;
+                border-right: 1px solid white;
+                padding-right: 10%;
             }
         }
     }

@@ -66,3 +66,17 @@
         top: 30px;
     }
 }
+
+@media screen and (max-width: $mobileView) {
+    .contact {
+        width: 90vw;
+
+        form {
+            width: 70%;
+        }
+
+        [type="submit"] {
+            font-size: .8em;
+        }
+    }
+}

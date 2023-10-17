@@ -47,7 +47,10 @@ export default function OtherList(props: any) {
                     }
                     <li><Link href={props.link} target='_blank'><LinkIcon /></Link></li>
                 </ul>
-                <p>{props.paragraph}</p>
+                { props.paragraph ?
+                    <p>{props.paragraph}</p>
+                    : null
+                }
             </div>
         </section>
     )
