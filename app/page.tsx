@@ -1,12 +1,9 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { useState, useEffect, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, ContactShadows, Environment } from "@react-three/drei";
 
-// import Donut from "@public/Donut";
-// import MainDonut from "@public/Maindonut";
-// import TestDonut from "@public/Testdonut";
 import PleaseDonut from "@public/PleaseDonut";
 
 import styles from "@styles/home.module.scss";
@@ -14,6 +11,7 @@ import styles from "@styles/home.module.scss";
 export default function Home() {
   const [newFont, setFont] = useState("");
   const [status, setTempText] = useState(true);
+
   const fonts = [
     "",
     "'Permanent Marker', cursive",
@@ -31,17 +29,43 @@ export default function Home() {
     }, 2500);
     return () => clearTimeout(tempText);
   }, []);
+
+  const donuts = [...Array(50)].map(() => ({
+    scale: [0.75, 0.75, 1, 1, 1.25][Math.floor(Math.random() * 5)],
+  }));
+
+  function handleTest() {
+    console.log("test");
+  }
+
   return (
     <main className={styles.main}>
-      <Canvas
-        camera={{ fov: 50, zoom: 10, near: 1, far: 1000, aspect: 10 }}
-        linear
-      >
-        <OrbitControls />
-        <directionalLight position={[10, 80, 20]} intensity={4} />
+      <Canvas camera={{ zoom: 34 }} linear>
+        <spotLight
+          intensity={0.5}
+          angle={0.1}
+          penumbra={1}
+          position={[10, 15, 10]}
+          castShadow
+        />
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[10, 80, 20]} intensity={2} />
         <directionalLight position={[-10, -10, 10]} intensity={2} />
-        {/* <directionalLight position={[-180, -120, -120]} intensity={1} /> */}
-        <PleaseDonut />
+        <directionalLight position={[-180, -120, -120]} intensity={1} />
+        <PleaseDonut onTest={handleTest} />
+        <Environment preset="city" />
+        {/* <ContactShadows
+          opacity={0.2}
+          scale={1}
+          blur={0.5}
+          far={0.8}
+        /> */}
+        <OrbitControls
+          minPolarAngle={0.8}
+          maxPolarAngle={Math.PI / 2}
+          enableZoom={false}
+          enablePan={false}
+        />
       </Canvas>
       {/* {status ? (
         <div className={styles.maintext}>
@@ -70,7 +94,6 @@ export default function Home() {
           </h2>
         </div>
       )} */}
-      {/* <iframe src="https://app.vectary.com/p/2mwMvxfpeApJbGJHGKZdot" width="100%" height="100%"></iframe> */}
       <header className={styles.mainHeader}>
         <ul>
           <li>

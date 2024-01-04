@@ -16,6 +16,7 @@
     "@mui/material": "^5.14.11",
     "@react-three/drei": "^9.92.7",
     "@react-three/fiber": "^8.15.13",
+    "@react-three/rapier": "^1.2.1",
     "@types/node": "20.6.3",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
@@ -30,7 +31,8 @@
     "reactjs-popup": "^2.0.6",
     "slick-carousel": "^1.8.1",
     "three": "^0.160.0",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "valtio": "^1.12.1"
   },
   "devDependencies": {
     "@types/react-slick": "^0.23.10",

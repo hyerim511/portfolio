@@ -4,20 +4,57 @@ Command: npx gltfjsx@6.2.16 pleasedonut.gltf --transform
 Files: pleasedonut.gltf [5.05KB] > /Users/hrkim/Documents/Study/new-portfolio/portfolio/public/pleasedonut-transformed.glb [243.12KB] (-4714%)
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import * as THREE from "three";
+import React, { useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
+import { proxy, useSnapshot } from "valtio";
 
-export default function Model(props) {
-  const { nodes, materials } = useGLTF('/pleasedonut-transformed.glb')
-  const settedColor = new THREE.MeshLambertMaterial({ color: "red" })
+const state = proxy({
+  current: null,
+  items: {
+    laces: "#fff",
+    mesh: "#fff",
+    caps: "#fff",
+    inner: "#fff",
+    sole: "#fff",
+    stripes: "#fff",
+    band: "#fff",
+    patch: "#fff",
+  },
+});
+
+export default function PleaseDonut({ onTest, ...props }) {
+  const { nodes, materials } = useGLTF("/pleasedonut-transformed.glb");
+  // const newPosition = [-0.259, 0.017, -0.029]
+  const ref = useRef();
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    ref.current.rotation.set(
+      Math.cos(t / 4) / 4,
+      Math.sin(t / 4) / 4,
+      -0.2 - (1 + Math.sin(t / 1.5)) / 20
+    );
+    ref.current.position.y = (1 + Math.sin(t / 1.5)) / 80;
+  });
+  // materials["Material.002"].color.set("#EC52CA");
   return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.donut002.geometry} material={materials['Material.003']} position={[-0.259, 0.017, -0.029]} />
-      <mesh geometry={nodes.icing002.geometry} material={materials['Material.002']} position={[-0.259, 0.017, -0.029]} />
-      {/* <mesh geometry={nodes.icing003.geometry} material={materials['Material.005']} position={[-0.259, 0.017, -0.029]} /> */}
-      <mesh geometry={nodes.icing003.geometry} material={settedColor} position={[-0.259, 0.017, -0.029]} />
+    <group ref={ref}>
+      <mesh
+        geometry={nodes.donut002.geometry}
+        material={materials["Material.003"]}
+        onClick={onTest}
+        />
+      <mesh
+        geometry={nodes.icing002.geometry}
+        material={materials["Material.002"]}
+        />
+      <mesh
+        geometry={nodes.icing003.geometry}
+        material={materials["Material.005"]}
+      />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/pleasedonut-transformed.glb')
+useGLTF.preload("/pleasedonut-transformed.glb");
