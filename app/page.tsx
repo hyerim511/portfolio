@@ -1,10 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, ContactShadows, Environment } from "@react-three/drei";
+import { useState, useEffect } from "react";
 
-import PleaseDonut from "@public/PleaseDonut";
+import MainDonut from "@/components/MainDonut";
 
 import styles from "@styles/home.module.scss";
 
@@ -34,39 +32,9 @@ export default function Home() {
     scale: [0.75, 0.75, 1, 1, 1.25][Math.floor(Math.random() * 5)],
   }));
 
-  function handleTest() {
-    console.log("test");
-  }
-
   return (
     <main className={styles.main}>
-      <Canvas camera={{ zoom: 34 }} linear>
-        <spotLight
-          intensity={0.5}
-          angle={0.1}
-          penumbra={1}
-          position={[10, 15, 10]}
-          castShadow
-        />
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[10, 80, 20]} intensity={2} />
-        <directionalLight position={[-10, -10, 10]} intensity={2} />
-        <directionalLight position={[-180, -120, -120]} intensity={1} />
-        <PleaseDonut onTest={handleTest} />
-        <Environment preset="city" />
-        {/* <ContactShadows
-          opacity={0.2}
-          scale={1}
-          blur={0.5}
-          far={0.8}
-        /> */}
-        <OrbitControls
-          minPolarAngle={0.8}
-          maxPolarAngle={Math.PI / 2}
-          enableZoom={false}
-          enablePan={false}
-        />
-      </Canvas>
+      <MainDonut />
       {/* {status ? (
         <div className={styles.maintext}>
           <h1>

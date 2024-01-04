@@ -88,3 +88,11 @@
         font-size: 1.5em;
     }
 }
+
+
+.colorPicker {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+}

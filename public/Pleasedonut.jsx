@@ -4,29 +4,13 @@ Command: npx gltfjsx@6.2.16 pleasedonut.gltf --transform
 Files: pleasedonut.gltf [5.05KB] > /Users/hrkim/Documents/Study/new-portfolio/portfolio/public/pleasedonut-transformed.glb [243.12KB] (-4714%)
 */
 
-import * as THREE from "three";
 import React, { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import { proxy, useSnapshot } from "valtio";
 
-const state = proxy({
-  current: null,
-  items: {
-    laces: "#fff",
-    mesh: "#fff",
-    caps: "#fff",
-    inner: "#fff",
-    sole: "#fff",
-    stripes: "#fff",
-    band: "#fff",
-    patch: "#fff",
-  },
-});
-
-export default function PleaseDonut({ onTest, ...props }) {
+export default function PleaseDonut({ onTest, state }) {
   const { nodes, materials } = useGLTF("/pleasedonut-transformed.glb");
-  // const newPosition = [-0.259, 0.017, -0.029]
   const ref = useRef();
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
@@ -37,7 +21,8 @@ export default function PleaseDonut({ onTest, ...props }) {
     );
     ref.current.position.y = (1 + Math.sin(t / 1.5)) / 80;
   });
-  // materials["Material.002"].color.set("#EC52CA");
+  const snap = useSnapshot(state)
+  materials["Material.002"].color.set(snap.color);
   return (
     <group ref={ref}>
       <mesh
