@@ -1,5 +1,10 @@
 @import './variable.scss';
 
+.main {
+    width: 100vw;
+    height: 100vh;
+}
+
 .maintext {
     @include flexCenter;
     height: 100vh;
