@@ -9,7 +9,7 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import { proxy, useSnapshot } from "valtio";
 
-export default function PleaseDonut({ onTest, state }) {
+export default function PleaseDonut({ state }) {
   const { nodes, materials } = useGLTF("/pleasedonut-transformed.glb");
   const ref = useRef();
   useFrame((state) => {
@@ -28,7 +28,6 @@ export default function PleaseDonut({ onTest, state }) {
       <mesh
         geometry={nodes.donut002.geometry}
         material={materials["Material.003"]}
-        onClick={onTest}
         />
       <mesh
         geometry={nodes.icing002.geometry}

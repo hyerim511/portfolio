@@ -1,21 +1,14 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
-import { proxy, useSnapshot } from "valtio";
 
 import PleaseDonut from "@public/PleaseDonut";
 import ColorPicker from "@/components/ColorPicker";
 
-const state = proxy({
-  current: null,
-  color: '',
-});
+import styles from "@styles/home.module.scss";
 
-export default function MainDonut() {
-  function handleTest() {
-    console.log("test");
-  }
+export default function MainDonut(props: {state: any}) {
   return (
-    <>
+    <div className={styles.donutContainer}>
       <Canvas camera={{ zoom: 34 }} linear>
         <spotLight
           intensity={0.5}
@@ -28,7 +21,7 @@ export default function MainDonut() {
         <directionalLight position={[10, 80, 20]} intensity={2} />
         <directionalLight position={[-10, -10, 10]} intensity={2} />
         <directionalLight position={[-180, -120, -120]} intensity={1} />
-        <PleaseDonut state={state} onTest={handleTest} />
+        <PleaseDonut state={props.state} />
         <Environment preset="city" />
         <OrbitControls
           minPolarAngle={0.8}
@@ -37,7 +30,7 @@ export default function MainDonut() {
           enablePan={false}
         />
       </Canvas>
-      <ColorPicker state={state} />
-    </>
+      <ColorPicker state={props.state} />
+    </div>
   );
 }
