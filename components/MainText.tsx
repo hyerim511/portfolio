@@ -13,7 +13,7 @@ export default function MainText(props: {state: any}) {
         I&apos;m a<br />
         Graphic Designer
       </h1>
-      <h2 style={{ color: snap.color }}>
+      <h2 style={snap.color !== '' ? { color: snap.color, filter:'blur(0)' } : {}}>
         <br />
         Haley
         <br />

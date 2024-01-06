@@ -7,9 +7,9 @@ Files: pleasedonut.gltf [5.05KB] > /Users/hrkim/Documents/Study/new-portfolio/po
 import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import { proxy, useSnapshot } from "valtio";
+import { useSnapshot } from "valtio";
 
-export default function PleaseDonut({ state }) {
+export default function PleaseDonut({ state, onColorChange }) {
   const { nodes, materials } = useGLTF("/pleasedonut-transformed.glb");
   const ref = useRef();
   useFrame((state) => {
@@ -21,18 +21,27 @@ export default function PleaseDonut({ state }) {
     );
     ref.current.position.y = (1 + Math.sin(t / 1.5)) / 80;
   });
-  const snap = useSnapshot(state)
+  const snap = useSnapshot(state);
   materials["Material.002"].color.set(snap.color);
+  function handleClick(e) {
+    e.stopPropagation();
+    state.offsetX = e.offsetX;
+    state.offsetY = e.offsetY;
+    state.current = "test";
+    onColorChange();
+  }
   return (
     <group ref={ref}>
       <mesh
         geometry={nodes.donut002.geometry}
         material={materials["Material.003"]}
-        />
+      />
       <mesh
         geometry={nodes.icing002.geometry}
         material={materials["Material.002"]}
-        />
+        onClick={handleClick}
+        onPointerMissed={() => (state.current = null)}
+      />
       <mesh
         geometry={nodes.icing003.geometry}
         material={materials["Material.005"]}

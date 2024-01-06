@@ -6,28 +6,28 @@
 }
 
 .maintext {
-    @include flexCenter;
+    @include flex;
+    align-items: center;
     height: 100vh;
-    width: 100%;
+    width: 50%;
     position: fixed;
     top: 0;
     z-index: -99;
 
-    h1 {
-        text-align: center;
+    h1, h2 {
         font-size: 8em;
         color: #000000;
         line-height: 1em;
-        font-weight: 900;
+        font-weight: 500;
     }
     
     h2 {
-        text-align: center;
         position: absolute;
-        font-size: 8em;
-        line-height: 1em;
-        mix-blend-mode:screen;
+        left: 2em;
         font-weight: 900;
+        color: rgba(0,0,0,0.2);
+        filter:blur(5px);
+        text-decoration: underline;
     }
 }
 
@@ -75,8 +75,18 @@
 
 @media screen and (max-width: $mobileView) {
     .maintext {
+        width: 100%;
+        align-items: flex-start;
+
         h1, h2 {
-            font-size: 3em;
+            font-size: 4em;
+            line-height: 1.5em;
+        }
+
+        h2 {
+            top: .5em;
+            left: 1em;
+            filter:blur(3px);
         }
     }
 
@@ -100,7 +110,5 @@
 
 .colorPicker {
     position: fixed;
-    left: 0;
-    top: 0;
     z-index: 9999;
 }

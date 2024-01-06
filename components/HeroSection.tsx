@@ -7,6 +7,8 @@ import MainText from "./MainText";
 const state = proxy({
     current: null,
     color: '',
+    offsetX: 0,
+    offsetY: 0,
   });
 
 export default function HeroSection() {
