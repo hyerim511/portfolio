@@ -27,9 +27,12 @@ export default function PleaseDonut({ state, onColorChange }) {
     e.stopPropagation();
     state.offsetX = e.offsetX;
     state.offsetY = e.offsetY;
-    state.current = "test";
+    state.current = "click";
     onColorChange();
   }
+  
+  const cursorSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="77" height="77" viewBox="0 0 100 100" fill="none"><text x="30" y="15" fill="black" font-family="Montserrat, sans-serif">CLICK!</text><rect width="27" height="27" rx="38.5" fill="black"/></svg>'
+  
   return (
     <group ref={ref}>
       <mesh
@@ -41,6 +44,8 @@ export default function PleaseDonut({ state, onColorChange }) {
         material={materials["Material.002"]}
         onClick={handleClick}
         onPointerMissed={() => (state.current = null)}
+        onPointerOver={() => (document.body.style.cursor = `url("data:image/svg+xml;base64,${btoa(cursorSvg)}"), pointer`)}
+        onPointerOut={() => (document.body.style.cursor = "")}
       />
       <mesh
         geometry={nodes.icing003.geometry}
