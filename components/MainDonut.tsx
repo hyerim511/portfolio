@@ -14,7 +14,7 @@ export default function MainDonut(props: { state: any }) {
   }
   return (
     <div className={styles.donutContainer}>
-      <Canvas camera={{ zoom: 34 }} linear>
+      <Canvas camera={{ zoom: 36 }} linear>
         <spotLight
           intensity={0.5}
           angle={0.1}

@@ -5,20 +5,6 @@ import styles from "@styles/home.module.scss";
 import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
-  // const [newFont, setFont] = useState("");
-
-  // const fonts = [
-  //   "",
-  //   "'Permanent Marker', cursive",
-  //   "'Kenia', cursive",
-  //   "'Rock Salt', cursive",
-  //   "'Homemade Apple', cursive",
-  //   "'Nothing You Could Do', cursive",
-  // ];
-  // const changeFont = () => {
-  //   setFont(fonts[Math.floor(Math.random() * fonts.length)]);
-  // };
-
   return (
     <main className={styles.main}>
       <HeroSection />
@@ -32,11 +18,6 @@ export default function Home() {
           </li>
         </ul>
       </header>
-      {/* <div className={styles.btnChange} onClick={changeFont}>
-        change
-        <br />
-        font
-      </div> */}
     </main>
   );
 }
