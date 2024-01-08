@@ -1,25 +1,32 @@
 @import './variable.scss';
 
-.maintext {
-    @include flexCenter;
+.main {
+    width: 100vw;
     height: 100vh;
+}
 
-    h1 {
-        text-align: center;
-        font-size: 8em;
+.maintext {
+    width: 70%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: -99;
+
+    h1, h2 {
+        font-size: 8.5em;
         color: #000000;
         line-height: 1em;
-        font-weight: 900;
+        font-weight: 500;
     }
     
     h2 {
-        text-align: center;
         position: absolute;
-        font-size: 8em;
-        line-height: 1em;
-        color: #3bff58;
-        mix-blend-mode:screen;
+        top: .5em;
+        left: 2em;
         font-weight: 900;
+        color: rgba(0,0,0,0.2);
+        filter:blur(5px);
+        text-decoration: underline;
     }
 }
 
@@ -67,12 +74,24 @@
 
 @media screen and (max-width: $mobileView) {
     .maintext {
+        width: 100%;
+        align-items: flex-start;
+
         h1, h2 {
             font-size: 3em;
+            line-height: 1.3em;
+        }
+
+        h2 {
+            top: .5em;
+            left: 1em;
+            filter:blur(3px);
         }
     }
 
     .mainHeader {
+        top: auto;
+        bottom: 20px;
         a {
             font-size: 1.5em;
             line-height: 2.5;
@@ -82,4 +101,15 @@
     .btnChange {
         font-size: 1.5em;
     }
+}
+
+
+.donutContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.colorPicker {
+    position: fixed;
+    z-index: 9999;
 }
