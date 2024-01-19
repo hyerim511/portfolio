@@ -1,7 +1,6 @@
 import { proxy } from "valtio";
 
 import MainDonut from "@/components/MainDonut";
-import styles from "@styles/home.module.scss";
 import MainText from "./MainText";
 
 const state = proxy({

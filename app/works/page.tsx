@@ -24,7 +24,6 @@ export default function WorkList() {
                 <li><a onClick={(e) => linkTo(e)}>JewelryLane</a></li>
                 <li><a onClick={(e) => linkTo(e)}>Mungmung</a></li>
                 <li><a onClick={(e) => linkTo(e)}>FakeMuseum</a></li>
-                {/* <li><a onClick={(e) => linkTo(e)}>readywear</a></li> */}
             </ul>
             <div>
                 <p><Link href="/works/other">See other projects</Link></p>

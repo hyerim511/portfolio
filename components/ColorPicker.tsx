@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { useSnapshot } from "valtio";
 import styles from "@styles/home.module.scss";
