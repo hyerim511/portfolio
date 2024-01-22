@@ -7,7 +7,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 
 import OtherList from '@components/OtherList'
-import BtnBack from '@components/BtnBack'
+import BtnBack from '@/components/ui/BtnBack'
 
 import imageCosmos1 from '@public/works/other/cosmos-1.jpeg'
 import imageCosmos2 from '@public/works/other/cosmos-2.jpeg'

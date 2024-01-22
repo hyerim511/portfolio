@@ -5,10 +5,10 @@ import imagePopup from '@public/works/fake/fake-2.png'
 
 import Link from 'next/link'
 
-import WorkTitle from '@components/WorkTitle'
-import WorkText from '@components/WorkText'
-import WorkLink from '@components/WorkLink'
-import BtnBack from '@components/BtnBack'
+import WorkTitle from '@/components/ui/WorkTitle'
+import WorkText from '@/components/ui/WorkText'
+import WorkLink from '@/components/ui/WorkLink'
+import BtnBack from '@/components/ui/BtnBack'
 
 import styles from '@styles/works/fake.module.scss'
 

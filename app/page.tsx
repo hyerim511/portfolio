@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import styles from "@styles/home.module.scss";
 import HeroSection from "@/components/HeroSection";
+import ProjectList from "@/components/ProjectList";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
           </li>
         </ul>
       </header>
+      <ProjectList />
     </main>
   );
 }

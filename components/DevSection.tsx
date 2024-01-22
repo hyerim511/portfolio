@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
-import Accordion from '@/components/Accordion'
+import Accordion from '@/components/ui/Accordion'
 import styles from '@styles/components/devSection.module.scss'
 
 export default function DevSection(props: any) {

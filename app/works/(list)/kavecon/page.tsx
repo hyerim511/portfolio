@@ -3,10 +3,10 @@ import Image from 'next/image'
 import imageDetail from '@public/works/kavecon/kavecon-3.png'
 import imageCart from '@public/works/kavecon/kavecon-4.png'
 
-import WorkTitle from '@components/WorkTitle'
-import WorkText from '@components/WorkText'
-import WorkLink from '@components/WorkLink'
-import BtnBack from '@components/BtnBack'
+import WorkTitle from '@/components/ui/WorkTitle'
+import WorkText from '@/components/ui/WorkText'
+import WorkLink from '@/components/ui/WorkLink'
+import BtnBack from '@/components/ui/BtnBack'
 
 import styles from '@styles/works/kavecon.module.scss'
 

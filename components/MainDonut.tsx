@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
 
 import PleaseDonut from "@public/Pleasedonut.jsx";
-import ColorPicker from "@/components/ColorPicker";
+import ColorPicker from "@/components/ui/ColorPicker";
 
 import styles from "@styles/home.module.scss";
 

@@ -6,11 +6,11 @@ import imageDev1 from '@public/works/readvice/dev1.png'
 import imageDev2 from '@public/works/readvice/dev2.png'
 import imageDev3 from '@public/works/readvice/dev3.png'
 
-import WorkTitle from '@components/WorkTitle'
-import WorkText from '@components/WorkText'
-import WorkLink from '@components/WorkLink'
+import WorkTitle from '@/components/ui/WorkTitle'
+import WorkText from '@/components/ui/WorkText'
+import WorkLink from '@/components/ui/WorkLink'
 import DevSection from '@components/DevSection'
-import BtnBack from '@components/BtnBack'
+import BtnBack from '@/components/ui/BtnBack'
 
 import styles from '@styles/works/readvice.module.scss'
 
