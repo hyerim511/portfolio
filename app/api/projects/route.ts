@@ -14,9 +14,10 @@ import { promises as fs } from "fs";
 // }
 
 export async function GET(request: any) {
-  const data = await fs.readFile(
+  const file = await fs.readFile(
     process.cwd() + "/app/projects/project.json",
     "utf8"
   );
+  const data = JSON.parse(file);
   return NextResponse.json(data, { status: 200 });
 }
