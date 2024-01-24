@@ -2,15 +2,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function ProjectList() {
-  const [projects, setProjects] = useState({message: ''});
-
+  const [projects, setProjects] = useState({ message: "" });
 
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const res = await fetch(
-          "/api/projects"
-        );
+        const res = await fetch("/api/projects");
         const resData = await res.json();
         setProjects(resData);
       } catch (error: any) {
@@ -21,7 +18,6 @@ export default function ProjectList() {
   }, []);
 
   console.log(projects);
-
 
   return (
     <section>
