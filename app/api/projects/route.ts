@@ -15,7 +15,7 @@ import { promises as fs } from "fs";
 
 export async function GET(request: any) {
   const file = await fs.readFile(
-    process.cwd() + "/app/projects/project.json",
+    process.cwd() + "project.json",
     "utf8"
   );
   const data = JSON.parse(file);
