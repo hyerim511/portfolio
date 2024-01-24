@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function ProjectList() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState({message: ''});
   useEffect(() => {
     async function fetchProjects() {
       try {
@@ -21,7 +21,8 @@ export default function ProjectList() {
       <button>development</button>
       <button>design</button>
       <ul>
-        {projects.map((project: any) => (
+        <p>{projects.message}</p>
+        {/* {projects.map((project: any) => (
           <li key={project.id}>
             <div>
               <p>
@@ -31,7 +32,7 @@ export default function ProjectList() {
             </div>
             <p>{project.title}</p>
           </li>
-        ))}
+        ))} */}
       </ul>
     </section>
   );
