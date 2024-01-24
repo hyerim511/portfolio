@@ -9,7 +9,7 @@ export default function ProjectList() {
     async function fetchProjects() {
       try {
         const res = await fetch(
-          "api/projects"
+          "/api/projects"
         );
         const resData = await res.json();
         setProjects(resData);
