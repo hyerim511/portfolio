@@ -1,10 +1,11 @@
 // import type { NextApiRequest, NextApiResponse } from 'next'
 import { NextResponse } from "next/server";
- 
+import { promises as fs } from "fs";
+
 // type ResponseData = {
 //   message: string
 // }
- 
+
 // export default function handler(
 //   req: NextApiRequest,
 //   res: NextApiResponse<ResponseData>
@@ -13,5 +14,9 @@ import { NextResponse } from "next/server";
 // }
 
 export async function GET(request: any) {
-  return NextResponse.json({ message: "Hello World" }, { status: 200 });
+  const data = await fs.readFile(
+    process.cwd() + "/app/projects/project.json",
+    "utf8"
+  );
+  return NextResponse.json(data, { status: 200 });
 }
