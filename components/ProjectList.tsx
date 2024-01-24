@@ -2,26 +2,27 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function ProjectList() {
-  // const [projects, setProjects] = useState({message: ''});
-  const router = useRouter();
-  // const projects = router.query["projects"];
-  console.log(router);
+  const [projects, setProjects] = useState({message: ''});
 
 
-  // useEffect(() => {
-  //   async function fetchProjects() {
-  //     try {
-  //       const res = await fetch(
-  //         "api/projects"
-  //       );
-  //       const resData = await res.json();
-  //       setProjects(resData);
-  //     } catch (error: any) {
-  //       new Error("fetch erorr", error);
-  //     }
-  //   }
-  //   fetchProjects();
-  // }, []);
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const res = await fetch(
+          "api/projects"
+        );
+        const resData = await res.json();
+        setProjects(resData);
+      } catch (error: any) {
+        new Error("fetch erorr", error);
+      }
+    }
+    fetchProjects();
+  }, []);
+
+  console.log(projects);
+
+
   return (
     <section>
       <button>development</button>
