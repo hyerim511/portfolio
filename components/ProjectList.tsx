@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 export default function ProjectList() {
   // const [projects, setProjects] = useState({message: ''});
   const router = useRouter();
-  const projects = router.query["projects"];
-  console.log(projects);
+  // const projects = router.query["projects"];
+  console.log(router);
 
 
   // useEffect(() => {
