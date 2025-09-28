@@ -20,12 +20,12 @@ export default function WorkLink(props: any) {
                     <Link href={props.git}  target="_blank"><ArrowRight />See Github</Link>
                 </button>
             }
-            <button style={{color: props.color}} onClick={() => setOpen(o => !o)}>
+            {/* <button style={{color: props.color}} onClick={() => setOpen(o => !o)}>
                 <ArrowRight />Any Question?
             </button>
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
                 <Contact close={closeModal}/>
-            </Popup>
+            </Popup> */}
         </section>
     )
 }
