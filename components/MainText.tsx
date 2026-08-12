@@ -11,14 +11,18 @@ export default function MainText(props: {state: any}) {
         Hyerim
         <br />
         I&apos;m a<br />
-        Graphic Designer
+        Graphic
+        <br />
+        Designer
       </h1>
       <h2 style={snap.color !== '' ? { color: snap.color, filter:'blur(0)' } : {}}>
         <br />
         Haley
         <br />
         <br />
-        Web Developer
+        Design
+        <br />
+        Engineer
       </h2>
     </div>
   );

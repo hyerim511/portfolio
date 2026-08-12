@@ -1,23 +1,14 @@
 "use client";
-import Link from "next/link";
 
 import styles from "@styles/home.module.scss";
 import HeroSection from "@/components/HeroSection";
+import IconNav from "@/components/IconNav";
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <HeroSection />
-      <header className={styles.mainHeader}>
-        <ul>
-          <li>
-            <Link href="/works">Works</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact me</Link>
-          </li>
-        </ul>
-      </header>
+      <IconNav />
     </main>
   );
 }

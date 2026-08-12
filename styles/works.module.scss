@@ -1,54 +1,191 @@
 @import './variable.scss';
 
 .works {
-    width: 100vw;
-    height: 100vh;
-    background-color: #272727;
-    background-image: url('/bg.png');
-    background-size: 20px;
-    background-blend-mode:multiply;
-    @include flexCenter(4em);
-    flex-direction: column;
-    color: white;
-    text-align: center;
+    min-height: 100vh;
+    /* 선택 표시선이 화면 왼쪽 끝까지 뻗으므로 가로 넘침을 막는다 */
+    overflow-x: hidden;
+    padding: 2.7rem 2.7rem 8rem;
+    @include bgPattern($bgDark, 0.1);
+    color: $paper;
+    font-family: $fontMain;
+}
+
+.title {
+    margin-bottom: 2.2rem;
+    font-size: clamp(3.5rem, 10.6vw, 9.5rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+/* 왼쪽 필터 / 오른쪽 목록 2단 */
+.body {
+    @include grid(minmax(200px, 34%) minmax(0, 1fr));
+}
+
+/* 타이틀+필터를 화면 좌상단에 고정한다. 목록은 페이지와 함께 그대로 스크롤되어
+   그 아래를 지나가며, 시안처럼 스크롤 시 타이틀과 겹쳐 보인다 */
+.sidebar {
+    position: fixed;
+    top: 2.7rem; // .works의 위쪽 패딩과 맞춘다
+    left: 2.7rem;
+    /*
+      고정 요소라 목록 위에 떠 있는데, 박스 폭이 목록 칸까지 걸쳐서
+      그대로 두면 목록 항목의 앞글자 클릭이 이 박스에 먹힌다.
+      박스는 클릭을 통과시키고, 실제 버튼만 다시 받도록 한다.
+    */
+    pointer-events: none;
+}
+
+/* ── 필터 ── */
+.filters {
+    @include flexCol(0);
+    align-items: flex-start;
+}
+
+.filter {
+    position: relative;
+    padding: 0.42rem 0;
+    pointer-events: auto; // 사이드바에서 유일하게 클릭을 받는 요소
+    color: inherit;
+    font-family: inherit; // 버튼은 기본적으로 폰트를 물려받지 않는다
+    font-size: clamp(1rem, 1.8vw, 1.6rem);
+    font-weight: 300;
+    line-height: 1.4;
+    text-align: left;
+    opacity: 0.55;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+.active {
+    opacity: 1;
+
+    /* 시안의 선택 표시 — 글자 왼쪽으로 뻗어 화면 끝에 닿는 가로선 */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 0.55rem);
+        width: 2.1rem;
+        height: 1px;
+        background-color: currentColor;
+    }
+}
+
+/* ── 목록 ── */
+/* sidebar가 그리드 흐름에서 빠지므로(position: fixed), 목록이 원래의
+   오른쪽 칸 위치를 유지하도록 grid-column을 명시한다 */
+.list {
+    grid-column: 2;
+    padding-top: 20rem;
+}
+
+.caseStudy,
+.card {
+    transition: filter 0.35s, opacity 0.35s;
+}
+
+.caseStudy {
+    margin-bottom: 2.5rem;
+}
+
+.meta {
+    @include flexAlign(left, baseline, 0.8rem);
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.category {
+    font-weight: 700;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
+    white-space: nowrap;
+}
 
-    ul {
-        font-size: 5em;
-        font-weight: 100;
-        @include flexCol(.8em);
+.tools {
+    opacity: 0.55;
+}
+
+.caseTitle {
+    font-size: clamp(2.2rem, 5.2vw, 4.7rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+/* 목록 항목을 눌러 상세 모달을 연다 — 글자 모양은 그대로 두고 버튼 역할만 준다 */
+.open {
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.6;
     }
+}
 
-    li:hover {
-        font-style: italic;
-        cursor: pointer;
-    }
+.cards {
+    padding-top: 6.7rem;
+}
 
-    p:hover {
-        text-decoration: underline;
-        cursor: pointer;
-    }
+.card {
+    margin-bottom: 2rem;
+    font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+}
 
-    svg:hover {
-        transform: rotate(45deg);
-        cursor: pointer;
-    }
-
+/* 필터에 걸리지 않은 항목 — 지우지 않고 흐리게만 */
+.dimmed {
+    opacity: 0.45;
+    filter: blur(4px);
+    pointer-events: none;
 }
 
 @media screen and (max-width: $mobileView) {
     .works {
-        ul {
-            font-size: 2em;
-        }
+        padding: 1.25rem 1.25rem 5rem;
+        // 배경 패턴만 원본(16px)의 절반인 8px로 축소 (그라데이션 레이어는 auto 유지)
+        background-size: auto, 8px 8px;
+    }
 
-        p {
-            font-size: .8em;
-            line-height: 3;
-        }
+    .title {
+        margin-bottom: 1.4rem;
+    }
 
-        svg {
-            font-size: 3em;
-        }
+    /* 좁은 화면에서는 필터를 목록 위로 올려 한 단으로 쌓고, 겹침 효과도 해제한다 */
+    .body {
+        display: block;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    /* 데스크톱과 동일하게 세로로 쌓는다 (기존의 가로 칩 배치를 되돌림) */
+    .filters {
+        margin-bottom: 2.5rem;
+    }
+
+    .meta {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .list {
+        padding-top: 0;
+    }
+
+    .cards {
+        padding-top: 3rem;
     }
 }

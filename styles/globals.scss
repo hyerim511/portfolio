@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Montserrat:ital,wght@0,100;0,400;0,700;0,900;1,100&family=Permanent+Marker&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
+@import './variable.scss';
+
+// 영문 Poppins, 한글 Paperlogy(SIL 오픈 폰트 라이선스, 상업적 사용 가능)
+// Paperlogy는 공식 저장소가 안내하는 jsDelivr CDN 사용 (폰트 파일을 프로젝트에 넣지 않음)
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy.css');
 
 * {
     margin: 0;
@@ -14,18 +16,8 @@ a {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: $fontMain;
     line-height: 1.6em;
-}
-
-iframe {
-    position: absolute;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    mix-blend-mode: color-dodge;
-    filter: contrast(200%);
-    border: none;
 }
 
 ul, li {
@@ -39,15 +31,4 @@ button {
 
 h4 {
     font-size: 1.2em;
-}
-
-.slick-arrow.slick-prev {
-    left: 0;
-    width: 50px;
-    height: 50px;
-}
-.slick-arrow.slick-next {
-    right: 0;
-    width: 50px;
-    height: 50px;
 }

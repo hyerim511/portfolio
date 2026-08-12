@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
 
@@ -7,14 +7,27 @@ import ColorPicker from "@/components/ColorPicker";
 
 import styles from "@styles/home.module.scss";
 
+// styles/variable.scss의 $mobileView와 맞춘 기준
+const MOBILE_BREAKPOINT = 700;
+
 export default function MainDonut(props: { state: any }) {
   const [isPicker, setIsPicker] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+    const updateIsMobile = () => setIsMobile(mql.matches);
+    updateIsMobile();
+    mql.addEventListener("change", updateIsMobile);
+    return () => mql.removeEventListener("change", updateIsMobile);
+  }, []);
+
   function handleColorChange() {
     setIsPicker(true)
   }
   return (
     <div className={styles.donutContainer}>
-      <Canvas camera={{ zoom: 36 }} linear>
+      <Canvas camera={{ zoom: isMobile ? 30 : 46 }} linear>
         <spotLight
           intensity={0.5}
           angle={0.1}

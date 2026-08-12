@@ -30,3 +30,27 @@
 }
 
 $mobileView: 700px;
+
+// ── 개편 디자인 공통 값 ────────────────────────────────
+// 영문은 Poppins가 먼저 잡고, Poppins에 없는 한글은 브라우저가 자동으로 Paperlogy로 넘김
+$fontMain: 'Poppins', 'Paperlogy', sans-serif;
+
+$bgLight: #ede7e2; // About 배경
+$bgDark: #0a0a0a; // Works·상세 배경
+$ink: #0a0a0a; // 밝은 배경 위 글자색
+$paper: #ede7e2; // 어두운 배경 위 글자색
+
+/**
+ * 배경 격자 질감.
+ * bg-pattern.png(16px 흑백 체크) 위에 배경색을 덮어 격자를 원하는 만큼만 비치게 한다.
+ * 배경(background)으로 넣기 때문에 본문 글자를 가릴 걱정이 없다.
+ *   예) @include bgPattern($bgDark, 0.1)  → 격자가 10% 세기로 깔림
+ */
+@mixin bgPattern($color, $patternOpacity) {
+    $cover: 1 - $patternOpacity;
+    background-color: $color;
+    background-image:
+        linear-gradient(rgba($color, $cover), rgba($color, $cover)),
+        url('/assets/bg-pattern.png');
+    background-repeat: repeat;
+}

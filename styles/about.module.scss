@@ -1,0 +1,160 @@
+@import './variable.scss';
+
+.about {
+    min-height: 100vh;
+    padding: 2.5rem 2.5rem 7rem; // 시안: 상·좌 모두 40px
+    @include bgPattern($bgLight, 0.02);
+    color: $ink;
+    font-family: $fontMain;
+}
+
+/* ── 헤드라인 "from Design to Product" — 단어마다 한 줄 ──
+   1440 시안 실측값: 네 단어 모두 약 128px로 크기가 거의 같고,
+   굵기(Thin 100 ↔ SemiBold 600)로만 대비를 준다. 줄 간격 129.5px. */
+.headline {
+    /* 길이 단위로 줘야 두 크기가 섞여도 네 줄 간격이 같게 유지된다 (시안 129.5px) */
+    line-height: 9vw;
+    margin-bottom: 7.2rem; // 시안: 헤드라인 아래 본문까지
+
+    span {
+        display: block;
+    }
+}
+
+/* 연결어(from, to) — 아주 가는 획(Thin) */
+.light {
+    font-size: 8.84vw; // 127px @1440
+    font-weight: 100;
+    letter-spacing: 0.065em;
+}
+
+/* 강조어(Design, Product) — 크기는 거의 같고 굵기로만 대비를 준다 */
+.strong {
+    font-size: 8.93vw; // 128.6px @1440
+    font-weight: 400;
+    letter-spacing: 0.04em;
+}
+
+.bio {
+    margin-bottom: 5.5rem;
+    font-size: clamp(1.05rem, 1.9vw, 1.75rem);
+    line-height: 1.75;
+}
+
+/* 줄바꿈은 데이터의 \n이 정한다 — 좁은 화면에서는 각 줄이 알아서 접힌다 */
+.bioLine {
+    display: block;
+}
+
+/* ── 스킬 / 언어 그룹 ── */
+.groups {
+    @include flexCol(2.4rem);
+    margin-bottom: 6rem;
+}
+
+.groupLabel {
+    margin-bottom: 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.34em;
+    opacity: 0.5;
+}
+
+.chips {
+    @include flex(0);
+    flex-wrap: wrap;
+    row-gap: 0.6rem;
+}
+
+.chip {
+    padding: 0.62em 1.35em;
+    border: 1px solid $ink;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    /* 시안처럼 칩끼리 살짝 겹쳐 사슬 모양으로 이어지게 */
+    & + & {
+        margin-left: -0.85em;
+    }
+}
+
+/* 언어 칩의 레벨(NATIVE 등)은 이름보다 얇게 */
+.level {
+    margin-left: 0.5em;
+    font-weight: 400;
+}
+
+/* ── 연락처 ── */
+.contact {
+    @include flexCol(0.55rem);
+    font-size: 0.95rem;
+
+    div {
+        @include flexAlign(left, baseline, 0.6rem);
+    }
+
+    dt {
+        min-width: 5.5em;
+        font-weight: 700;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+.openTo {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    font-style: normal;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: $mobileView) {
+    .about {
+        padding: 1.25rem 1.25rem 5rem;
+        // 배경 패턴만 원본(16px)의 절반인 8px로 축소 (그라데이션 레이어는 auto 유지)
+        background-size: auto, 8px 8px;
+    }
+
+    /* 좁은 화면에서는 vw 기준 글자가 너무 작아지므로 고정 크기로 바꾼다 */
+    .headline {
+        margin-bottom: 2.5rem;
+        line-height: 1.08;
+    }
+
+    .light {
+        font-size: 3.4rem;
+        letter-spacing: 0.05em;
+    }
+
+    .strong {
+        font-size: 3.45rem;
+    }
+
+    .bio {
+        margin-bottom: 3.5rem;
+    }
+
+    .groups {
+        margin-bottom: 4rem;
+    }
+
+    /* 좁은 화면에서는 겹치면 읽기 어려워 일반 간격으로 */
+    .chips {
+        gap: 0.45rem;
+    }
+
+    .chip + .chip {
+        margin-left: 0;
+    }
+
+    .contact div {
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+}

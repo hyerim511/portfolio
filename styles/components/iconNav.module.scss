@@ -1,0 +1,68 @@
+@import '../variable.scss';
+
+.nav {
+    position: fixed;
+    top: 2.5rem;
+    right: 2.5rem;
+    z-index: 10;
+    @include flexCol(1.4rem); // 시안 실측: 아이콘 40px + 간격 22px = 중심 간 62px
+    align-items: flex-end;
+    font-family: $fontMain;
+}
+
+/* 아이콘과 메뉴명이 같은 자리에서 교체되도록 오른쪽 정렬로 맞춘다 */
+.item {
+    @include flexAlign(flex-end, center);
+    height: 40px;
+    cursor: pointer;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background-color: currentColor;
+    -webkit-mask: var(--icon) no-repeat center / contain;
+    mask: var(--icon) no-repeat center / contain;
+}
+
+.label {
+    display: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.item:hover {
+    .icon {
+        display: none;
+    }
+
+    .label {
+        display: block;
+    }
+}
+
+/*
+  좁은 화면에서는 콘텐츠 폭이 아이콘 자리까지 차서 fixed로 두면 칩 위를 덮는다.
+  absolute로 바꿔 페이지 맨 위에 두고 스크롤과 함께 올라가게 한다.
+  (마우스가 없는 기기라 hover 라벨은 어차피 쓰이지 않는다)
+*/
+@media screen and (max-width: $mobileView) {
+    .nav {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        gap: 1rem;
+    }
+
+    .icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .item {
+        height: 32px;
+    }
+}

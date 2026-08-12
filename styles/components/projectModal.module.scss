@@ -1,0 +1,664 @@
+@import '../variable.scss';
+
+/*
+  수치는 모두 1440×890(카드) / 1440 폭(케이스 스터디) 시안을 실측한 값이다.
+  가로 위치·크기는 % 또는 vw로, 화면 아래에 붙는 값은 px로 그대로 옮겼다.
+*/
+
+.modal {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $bgDark; // 모달은 격자 없이 단색
+    color: $paper;
+    font-family: $fontMain;
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+.inner {
+    padding: 2.5rem 2.5rem 0; // 시안 좌측 여백 40px
+}
+
+/* ── 닫기 버튼 ── */
+.close {
+    position: fixed;
+    top: 2.2rem;
+    right: 2.2rem;
+    z-index: 5;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.5rem;
+    color: #fff;
+    /* 배경 원 대신 blend-mode로 반전: 밝은 사진 위에서는 어둡게,
+       어두운 배경 위에서는 밝게 자동으로 바뀐다 */
+    mix-blend-mode: difference;
+    cursor: pointer;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+/* ── 머리말 ── */
+.header {
+    position: relative;
+    z-index: 2;
+    padding-right: 4rem; // 닫기 버튼 자리
+}
+
+.summary {
+    opacity: 0.5; // 시안 실측: 글자색의 50%
+    font-weight: 100;
+}
+
+/* 줄바꿈은 데이터의 \n이 정한다 */
+.summaryLine {
+    display: block;
+}
+
+.title {
+    font-family: 'Paperlogy', sans-serif; // 영문(titleEn)도 Poppins 대신 Paperlogy로 통일
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* 칩 — 높이 48px, 첫 칩만 채움 (시안 실측) */
+.chips {
+    @include flex(0);
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+    margin-top: 1.95rem; // 제목 아래 31px
+}
+
+.chip {
+    @include flexCenter;
+    /* 전역 box-sizing이 없어 테두리 2px이 높이에 더해지므로 여기서 지정 */
+    box-sizing: border-box;
+    height: 3rem; // 48px
+    padding: 0 1.3rem; // 시안 실측: 좌우 21px
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-size: 1.03rem; // 시안 실측: 약 16.5px
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    & + & {
+        margin-left: -0.8em;
+    }
+}
+
+.chipFilled {
+    position: relative;
+    z-index: 1;
+    background-color: $paper;
+    color: $bgDark;
+}
+
+/* 메타 — 라벨 열 폭 73px, 행 간격 28px (시안 실측) */
+.meta {
+    @include flexCol(0.55rem);
+    margin-top: 2.9rem;
+    font-size: 1rem;
+    line-height: 1.2; // 행 간격 28px에 맞춤
+
+    div {
+        @include flexAlign(left, baseline, 0);
+    }
+
+    dt {
+        min-width: 4.55rem; // 73px
+        opacity: 0.45;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+/* ══════════════════════════════════════════
+   카드형 — 이미지는 화면 아래를 기준으로 붙인다
+   ══════════════════════════════════════════ */
+.cardBody {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+
+    .summary {
+        font-size: 2.99vw; // 43px @1440 — 케이스 스터디와 동일
+        font-weight: 100;
+        line-height: 1.2;
+    }
+
+    .title {
+        margin-top: 0.85rem;
+        font-size: 4.17vw; // 60px @1440
+        line-height: 1.2;
+    }
+}
+
+/* 글 아래를 가로지르는 가는 선 (이미지가 그 위를 덮는다) */
+.rule {
+    position: absolute;
+    top: 84%;
+    right: 2.5rem;
+    left: 2.5rem;
+    height: 1px;
+    background-color: rgba(237, 231, 226, 0.25);
+}
+
+.media {
+    position: absolute;
+    inset: 0;
+
+    img {
+        display: block;
+        /* 시안 실측: 1px 테두리 + 16px 모서리 */
+        border: 1px solid #444;
+        border-radius: 16px;
+    }
+}
+
+/* 1장 — 오른쪽 절반을 위아래로 가득 (테두리·모서리 없음) */
+.media1 img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    object-fit: cover;
+}
+
+/* 2장 — 데스크톱 컷 위에 모바일 컷이 왼쪽 아래로 겹침 */
+.media2 img {
+    position: absolute;
+
+    &:nth-child(1) {
+        bottom: 80px;
+        left: 41.7%;
+        width: 52.8%;
+    }
+
+    &:nth-child(2) {
+        bottom: 60px;
+        left: 35.8%;
+        width: 11.1%;
+        border-radius: 20px; // 휴대폰 모서리는 더 둥글다
+    }
+}
+
+/* 3장 — 계단식. 대표 컷이 오른쪽 맨 앞 */
+.media3 img {
+    position: absolute;
+
+    &:nth-child(1) {
+        bottom: 85px;
+        left: 48.4%;
+        z-index: 3;
+        width: 46%;
+    }
+
+    &:nth-child(2) {
+        bottom: 220px;
+        left: 37.7%;
+        z-index: 2;
+        width: 41.5%;
+    }
+
+    &:nth-child(3) {
+        bottom: 60px;
+        left: 24.7%;
+        z-index: 1;
+        width: 45.8%;
+    }
+}
+
+/* 4장 — 세로 화면 4개를 가로로 나란히 */
+.media4 img {
+    position: absolute;
+    bottom: 80px;
+    width: 12.8%;
+    border-radius: 20px;
+
+    &:nth-child(1) { left: 41%; }
+    &:nth-child(2) { left: 54.5%; }
+    &:nth-child(3) { left: 68%; }
+    &:nth-child(4) { left: 81.6%; }
+}
+
+/* ══════════════════════════════════════════
+   케이스 스터디
+   ══════════════════════════════════════════ */
+.caseBody {
+    .summary {
+        font-size: 2.99vw; // 43px @1440
+        font-weight: 100;
+        line-height: 1.2;
+    }
+
+    .title {
+        margin-top: 0.85rem;
+        font-size: 4.17vw; // 60px @1440
+        line-height: 1.2;
+    }
+}
+
+/* 대표 컷 + 모바일 컷. 아래로 갈수록 배경으로 사라진다 */
+.csHero {
+    position: relative;
+    margin-top: 3.75rem; // 메타 아래 60px
+}
+
+.csHeroMain {
+    display: block;
+    width: 62.5%; // 900px @1440
+    margin-left: 14.2%; // x=205
+    border-radius: 15px;
+    /* 시안의 하단 그라데이션 — 이미지 아래쪽이 배경으로 녹아든다 */
+    -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 97%);
+    mask-image: linear-gradient(to bottom, #000 68%, transparent 97%);
+}
+
+/* 모바일 컷이 없어 겹쳐 배치할 이미지가 없는 경우(AB Media 등) 가운데 정렬 */
+.csHeroMain:only-child {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.csHeroMobile {
+    position: absolute;
+    top: 23%;
+    left: 68.9%;
+    width: 17.4%;
+    border-radius: 20px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 97%);
+    mask-image: linear-gradient(to bottom, #000 68%, transparent 97%);
+}
+
+/* 본문 구역 */
+.csSection {
+    position: relative;
+    /* 시안: 본문 구역은 머리말(40px)보다 안쪽인 57px에서 시작 */
+    padding: 0 2.5rem 0 3.56rem;
+}
+
+/* 첫 구역(The Challenge)은 히어로에서 265px 아래.
+   상세 이미지가 겹쳐 배치(absolute)라 높이에 잡히지 않으므로,
+   시안의 구역 높이(853px)를 최소 높이로 확보한다. */
+.csSection:first-of-type {
+    min-height: 53.3rem;
+    margin-top: 16.5rem;
+
+    /* Challenge 구역은 왼쪽 세로선(x=55)을 피해 불릿을 더 안쪽(x=86)에서 시작 */
+    .points {
+        padding-left: 1.8rem;
+    }
+}
+
+.csSection + .csSection {
+    margin-top: 2.6rem;
+
+    /* Solution 구역은 옆에 이미지가 없어 폭을 넓혀도 겹치지 않는다 —
+       긴 문장이 불필요하게 줄바꿈되지 않도록 폭 제한을 푼다 */
+    .csText {
+        max-width: none;
+    }
+
+    .points {
+        padding-left: 0;
+    }
+}
+
+/* Challenge 구역 왼쪽의 세로선 (시안 실측: x=55, y1423~2207) */
+.csRule {
+    position: absolute;
+    top: 5.3rem;
+    bottom: 0.44rem;
+    left: 3.8rem;
+    width: 1px;
+    background-color: rgba(237, 231, 226, 0.35);
+}
+
+.csText {
+    position: relative;
+    z-index: 2;
+    /* 시안 본문 최대 줄 폭 719px — 이보다 좁으면 한 줄짜리가 접힌다 */
+    max-width: 46rem;
+}
+
+.sectionTitle {
+    font-size: 3.54vw; // 51px @1440
+    font-weight: 300;
+    line-height: 1.15;
+}
+
+.points {
+    @include flexCol(1.34rem); // 행 간격 47px
+    margin-top: 2.13rem; // 제목 아래 34px (시안: 제목 위에서 불릿까지 92px)
+    padding-left: 0.7rem; // 시안: 불릿이 제목보다 11px 안쪽 (x=68)
+    font-size: clamp(14px, 1.11vw, 16px);
+    font-weight: 300;
+    line-height: 1.6;
+
+    li {
+        padding-left: 1rem;
+        text-indent: -1rem;
+
+        &::before {
+            content: '· ';
+        }
+    }
+}
+
+/* Challenge 옆 상세 이미지 — 서로 비스듬히 겹친다 */
+/* Challenge 옆 상세 이미지 — 위치는 모두 시안 좌표에서 환산한 값 */
+.csDetails {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    width: 62%;
+    height: 100%;
+
+    img {
+        position: absolute;
+        border-radius: 15px;
+    }
+
+    img:nth-child(1) {
+        top: 38.1%;
+        left: 3.5%;
+        width: 65.8%;
+    }
+
+    img:nth-child(2) {
+        top: 16.6%;
+        left: 27.2%;
+        width: 66.9%;
+    }
+
+    /* 이미지가 하나뿐인 경우(AB Media) */
+    img:only-child {
+        top: 10.8%;
+        left: 5.9%;
+        width: 78.4%;
+    }
+}
+
+/* Approach 아래 — 화면 끝까지 가로로 이어 붙인다 (높이 400px) */
+.csSlides {
+    margin-top: 8.25rem; // 본문 아래 176px (시안 기준)
+    overflow: hidden;
+}
+
+.csSlidesTrack {
+    @include flex(0);
+    width: max-content;
+    animation: slideLoop 60s linear infinite;
+
+    img {
+        display: block;
+        /* 높이만 정하고 너비는 비율대로 — 잘리지 않고 이미지 전체가 보인다 */
+        height: 25rem; // 400px
+        width: auto;
+        /* gap 대신 margin을 쓰면 항목마다 폭이 같아져 반복 지점이 정확히 맞는다 */
+        margin-right: 0.5rem;
+    }
+}
+
+/* 묶음 하나만큼 밀면 뒤에 붙인 복제본이 그 자리를 채워 끊김 없이 이어진다 */
+@keyframes slideLoop {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* 움직임 최소화를 설정한 사용자에게는 흐르지 않게 */
+@media (prefers-reduced-motion: reduce) {
+    .csSlidesTrack {
+        animation: none;
+    }
+}
+
+/* ── The Result — 밝은 배경으로 반전 (슬라이드와 맞붙는다) ── */
+.result {
+    margin-top: 0;
+    padding: 8.2rem 2.5rem; // 시안: 제목까지 131px
+    background-color: $bgLight;
+    color: $ink;
+    text-align: center;
+}
+
+.resultTitle {
+    margin-bottom: 4.8rem; // 시안: 제목에서 알약까지 102px
+    font-size: 3.54vw; // 51px @1440
+    /* 본문 섹션 제목(가는 획)과 달리 The Result는 굵다 — 시안 획 5px */
+    font-weight: 600;
+}
+
+.resultList {
+    @include flexCol(0);
+    align-items: center;
+
+    li {
+        @include flexCenter;
+        /* 이 프로젝트에는 전역 box-sizing 설정이 없다.
+           width:100%에 좌우 여백이 더해져 넘치지 않도록 여기서 지정한다. */
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 58.5rem; // 936px
+        min-height: 4.4rem; // 70px (시안 65~76px)
+        padding: 2rem;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        font-size: 1rem;
+        line-height: 1.5;
+        /* 알약끼리 살짝 겹쳐서 위아래 테두리 곡선이 하나로 이어지게 한다 */
+        margin-top: -1rem;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+/* ══════════════════════════════════════════
+   좁은 화면 — 겹침을 풀고 위에서 아래로 쌓는다
+   ══════════════════════════════════════════ */
+@media screen and (max-width: $mobileView) {
+    .inner {
+        padding: 1.25rem 1.25rem 0;
+    }
+
+    .close {
+        top: 1.1rem;
+        right: 1.1rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        padding: 0.45rem;
+    }
+
+    .header {
+        padding-right: 2.8rem;
+    }
+
+    .chips {
+        gap: 0.4rem;
+    }
+
+    /* 좁은 화면에서는 제목이 작아지므로 칩도 함께 줄여 균형을 맞춘다 */
+    .chip {
+        height: 2rem;
+        padding: 0 0.85rem;
+        font-size: 0.72rem;
+
+        & + & {
+            margin-left: 0;
+        }
+    }
+
+    .meta {
+        font-size: 0.9rem;
+
+        div {
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+    }
+
+    /* 좁은 화면에서는 vw 기준 글자가 너무 작아지므로 고정 크기로 */
+    .cardBody,
+    .caseBody {
+        .summary {
+            max-width: none;
+            font-size: 1rem;
+        }
+
+        .title {
+            font-size: 1.9rem;
+        }
+    }
+
+    .cardBody {
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .rule {
+        display: none;
+    }
+
+    .media {
+        position: static;
+        @include flexCol(1rem);
+        margin-top: 2.5rem;
+    }
+
+    .media1 img,
+    .media2 img,
+    .media3 img,
+    .media4 img {
+        position: static;
+        width: 100%;
+        height: auto;
+        object-fit: fill;
+    }
+
+    /* 데스크톱과 같이 두 컷을 겹치고 아래를 배경으로 흐린다 (폭만 크게 조정).
+       겹쳐 놓은 모바일 컷이 아래로 흘러넘치므로 그만큼 자리를 비워둔다. */
+    .csHero {
+        margin-top: 2rem;
+        padding-bottom: 5rem;
+    }
+
+    .csHeroMain {
+        width: 70%;
+        margin-left: 6%;
+    }
+
+    .csHeroMain:only-child {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .csHeroMobile {
+        top: 23%;
+        left: 66%;
+        width: 20%;
+    }
+
+    .csSection {
+        padding: 0 1.25rem;
+    }
+
+    .csSection:first-of-type {
+        /* 겹침 배치를 풀었으므로 데스크톱용 최소 높이(853px)를 없앤다 —
+           남겨두면 본문 아래에 큰 빈 공간이 생긴다 */
+        min-height: 0;
+        margin-top: 3rem;
+    }
+
+    .csRule {
+        display: none;
+    }
+
+    .csText {
+        max-width: none;
+    }
+
+    .sectionTitle {
+        font-size: 1.5rem;
+    }
+
+    /* 좁은 화면에는 세로선이 없으므로 불릿 들여쓰기도 되돌린다 */
+    .points,
+    .csSection:first-of-type .points {
+        gap: 0.8rem;
+        margin-top: 1.4rem;
+        padding-left: 0;
+        font-size: 0.95rem;
+    }
+
+    /* 본문 글과 같은 폭으로 세로로 쌓고, 사이 여백은 좁게 */
+    .csDetails {
+        position: static;
+        @include flexCol(0.6rem);
+        width: 100%;
+        height: auto;
+        margin-top: 1.4rem;
+
+        img,
+        img:only-child {
+            position: static;
+            top: auto;
+            left: auto;
+            right: auto;
+            width: 100%;
+        }
+    }
+
+    .csSlides {
+        margin-top: 3rem;
+    }
+
+    .csSlidesTrack img {
+        height: 12rem;
+        margin-right: 0.4rem;
+    }
+
+    .result {
+        padding: 3rem 1.25rem;
+    }
+
+    .resultTitle {
+        font-size: 1.5rem;
+    }
+
+    .resultList li {
+        padding: 0.9rem 1.4rem;
+        border-radius: 1.4rem;
+    }
+}
