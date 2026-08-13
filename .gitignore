@@ -19,6 +19,12 @@
 .DS_Store
 *.pem
 
+# 디자인 시안 (로컬 참조용)
+/design
+
+# Claude Code 로컬 도구 설정 (프로젝트 가이드인 CLAUDE.md는 루트에 있어 영향 없음)
+/.claude
+
 # debug
 npm-debug.log*
 yarn-debug.log*

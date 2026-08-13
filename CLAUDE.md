@@ -6,23 +6,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 프로젝트 개요
 
-UI/그래픽 디자이너의 개인 포트폴리오 사이트입니다.
-디자인(그래픽·브랜딩·UI)부터 프론트엔드 개발, AI 툴 활용까지 하는 디자이너의
-작업물을 소개하고, 수주 및 취업에 활용하는 것이 목적입니다.
+디자인과 프론트엔드 구현 작업물을 소개하는 개인 사이트입니다.
 
-- 기존 사이트: https://portfolio-hyerim511.vercel.app/
+- 사이트: https://portfolio-hyerim511.vercel.app/
 - 배포: Vercel
 
-## 소유자 정보 (중요)
+## 작업 방식
 
-- 소유자는 UI/그래픽 디자이너이며 프론트엔드는 "일부 가능한" 수준입니다.
-  전문 개발자가 아니므로, 코드 변경 시 **왜 그렇게 하는지 간단한 설명을 곁들여** 주세요.
+- 디자인 의도를 정확히 반영하는 것이 최우선입니다.
+  코드를 변경할 때는 **그 선택의 의도와 근거를 함께 설명해** 주세요.
 - 복잡한 추상화나 과도한 엔지니어링보다 **읽기 쉽고 유지보수하기 쉬운 코드**를 우선합니다.
 - 큰 변경을 한 번에 하지 말고 **작은 단위로 나눠서** 진행하고, 각 단계마다 확인받으세요.
 
 ## 기술 스택 (작업 시작 전 실제 확인 필요)
 
-아래는 소유자가 기억하는 스택입니다. **작업 전 package.json과 설정 파일로 실제 버전을 확인하세요.**
+문서는 뒤처질 수 있습니다. **작업 전 `package.json`과 설정 파일에서 실제 버전을 확인하세요.**
 
 - Framework: Next.js 14 (App Router) + TypeScript, React 18
 - Styling: SCSS 모듈 (`*.module.scss`) — CSS-in-JS 아님
@@ -110,7 +108,8 @@ npm start              # 빌드된 결과물 실행
 콘텐츠는 데이터 파일로 분리되어 있습니다. **위치 (확정):**
 
 - **데이터 파일 → `data/`** — `types.ts`, `projects.ts`, `about.ts`
-- **디자인 시안 → `design/`** — 각 화면 PNG (Claude Code가 구현 시 **시각 레퍼런스로 참조**)
+- **디자인 시안 → `design/`** — 각 화면 PNG (구현 시 **시각 레퍼런스로 참조**).
+  로컬 참조용이며 저장소에는 포함되지 않습니다 (`.gitignore`).
 - **이미지 에셋 → `public/assets/`** — 실제 사이트에 들어가는 이미지 파일
 
 ### 데이터 파일
@@ -162,7 +161,7 @@ npm start              # 빌드된 결과물 실행
 - 프로젝트는 `format`으로 구분: `case-study`(3개 — 코디세이·AB Media·샘푸르넷, 상세는 모달) / `card`(12개).
 - 케이스 스터디 상세는 문제(Problem/Challenge) → 해결책(Solution/Approach) → 결과(Outcome/Result) 3단 구조.
 - **카드형은 기간(period) 미표기** — `meta.period`는 optional이며 케이스 스터디에만 채워져 있음.
-- `liveUrl`은 "지금 결과물을 볼 수 있는 경우"만 존재 (예: TalentLift ○ / MilkT ✕).
+- `liveUrl`은 현재 접속 가능한 경우에만 존재합니다.
 
 ### About 섹션
 
@@ -171,7 +170,7 @@ npm start              # 빌드된 결과물 실행
 - 구성 순서: 헤드라인(`from Design to Product`) → 한 줄 소개 → 스킬 그룹 → 언어 → 연락처.
 - 스킬은 카테고리별 칩(chip) 형태. **막대그래프나 퍼센트 레벨 표시 금지.**
 - 스킬 그룹: **Design / Development / AI & Creative** (라벨·태그 모두 영문, `about.ts`의 `skillGroups`).
-- 경력 연차·연도는 표시하지 않음 (의도적 제외).
+- 경력 연차·연도는 표시하지 않습니다.
 - 언어 배지 4개: 한국어 Native · English Professional · 日本語 Professional · 中文 Basic.
 - 연락처: 이메일 + Location(Seoul) + **LinkedIn 링크** (`about.ts`의 `contact`). 값은 데이터 파일에서 가져오기.
 
@@ -179,5 +178,6 @@ npm start              # 빌드된 결과물 실행
 
 - **다국어 적용** — 위 "기술 스택"에 적힌 `locale` 하드코딩을 실제 라우트 기반으로 교체.
 - **반응형 점검** — 320px ~ 1920px+ 전 구간에서 `clamp()`/`vw` 값이 자연스럽게 스케일되는지 확인.
-- 디자인 세부(색·폰트·간격)는 소유자가 Figma에서 직접 결정합니다. Claude Code는 구조와 구현에
-  집중하고, 비주얼 디테일은 `design/` 폴더의 PNG 시안과 소유자 지시를 따르세요.
+- 디자인 세부(색·폰트·간격)는 Figma 시안에서 확정됩니다. 구조와 구현에 집중하고,
+  비주얼 디테일은 `design/` 폴더의 PNG 시안과 지시를 따르세요
+  (이 폴더는 로컬에만 있고 저장소에는 포함되지 않습니다).
