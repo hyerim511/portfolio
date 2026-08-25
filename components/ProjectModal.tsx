@@ -9,10 +9,8 @@ import { useEffect, useRef } from "react";
 
 import { CATEGORY_LABELS } from "@/data/projects";
 import type { CaseStudySection, Project } from "@/data/types";
+import { useLocale } from "@/components/LocaleProvider";
 import styles from "@styles/components/projectModal.module.scss";
-
-// 다국어는 6단계에서 적용. 그전까지 한국어 고정.
-const locale = "ko" as const;
 
 type Props = {
   project: Project;
@@ -20,6 +18,7 @@ type Props = {
 };
 
 export default function ProjectModal({ project, onClose }: Props) {
+  const { locale } = useLocale();
   const dialogRef = useRef<HTMLDialogElement>(null);
   // 최신 onClose를 담아둔다 — 아래 effect를 한 번만 실행시키기 위해서다.
   const onCloseRef = useRef(onClose);

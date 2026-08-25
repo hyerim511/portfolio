@@ -45,6 +45,52 @@
 }
 
 /*
+  언어 선택 — KR·EN을 세로로 붙여 한 덩어리로 둔다.
+  시안 실측: 배지 41×31px, 모서리 6px, 두 항목 중심 간격 32px.
+*/
+.localeGroup {
+    @include flexCol(1px);
+    align-items: flex-end;
+}
+
+.locale {
+    @include flexCenter;
+    box-sizing: border-box;
+    height: 31px;
+    padding: 0 0.45rem;
+    border-radius: 6px;
+    color: inherit;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 1.25rem; // 시안 실측: 글자 잉크 높이 약 14px
+    line-height: 1;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.65;
+    }
+}
+
+/*
+  현재 언어는 채워진 배지. 배경은 상속된 글자색(currentColor)을 그대로 써서
+  밝은 About·어두운 Works 어디서든 자동으로 대비가 잡힌다.
+
+  주의: 같은 요소에 color를 덮어쓰면 background의 currentColor도 그 값을 따라가
+  배경과 글자가 같은 색이 된다. 그래서 글자색은 안쪽 span에서만 뒤집는다.
+*/
+.localeActive {
+    background-color: currentColor;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    .localeLabel {
+        color: var(--nav-contrast, #{$bgDark});
+    }
+}
+
+/*
   좁은 화면에서는 콘텐츠 폭이 아이콘 자리까지 차서 fixed로 두면 칩 위를 덮는다.
   absolute로 바꿔 페이지 맨 위에 두고 스크롤과 함께 올라가게 한다.
   (마우스가 없는 기기라 hover 라벨은 어차피 쓰이지 않는다)
@@ -64,5 +110,11 @@
 
     .item {
         height: 32px;
+    }
+
+    .locale {
+        height: 26px;
+        padding: 0 0.4rem;
+        font-size: 1.05rem;
     }
 }

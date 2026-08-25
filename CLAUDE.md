@@ -26,9 +26,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Styling: SCSS 모듈 (`*.module.scss`) — CSS-in-JS 아님
 - 3D / Interactive: `@react-three/fiber` + `@react-three/drei` (Three.js 래퍼) — 메인의 인터랙티브 도넛 오브젝트, **반드시 유지**
 - 상태: `valtio` (도넛 색상 등 3D 인터랙션 상태 공유)
-- 다국어: 아직 미적용. `locale` 변수가 각 페이지/컴포넌트에 `const locale = "ko" as const;`로
-  하드코딩되어 있음 (예: `app/about/page.tsx`, `components/ProjectModal.tsx`).
-  next-intl 또는 next-i18next로 `/ko`, `/en` 라우팅 예정 — 실제 적용 시 이 하드코딩들을 교체해야 함.
+- 다국어: 라우트(`/ko`, `/en`)가 아니라 **클라이언트 상태**로 처리합니다.
+  `components/LocaleProvider.tsx`의 Context가 언어를 들고 있고, `useLocale()`로 꺼내 씁니다.
+  외부 i18n 라이브러리는 쓰지 않습니다.
 - 테스트 프레임워크 없음 — 검증은 빌드·타입체크·린트·수동 브라우저 확인으로 대신함.
 
 ## 명령어
@@ -76,8 +76,37 @@ npm start              # 빌드된 결과물 실행
 - 프로젝트 상세(케이스 스터디 3개 + 카드)는 **별도 페이지 라우트(`/works/[slug]`)가 아니라
   `ProjectModal.tsx` 모달**로 엽니다. `WorksList.tsx`가 `openProject` state로 어떤 프로젝트를
   모달에 띄울지 관리합니다. 상세 페이지 라우팅을 새로 만들 필요는 없습니다.
-- `app/about/page.tsx`는 `data/about.ts`(`AboutData`)를 그대로 읽어 헤드라인 → bio → 스킬 → 언어 →
-  연락처 순으로 렌더링합니다. 연락처는 여기 하단에 통합되어 있고 별도 Contact 페이지는 없습니다.
+- About은 `app/about/page.tsx`(서버 — `metadata` 전용)와 `components/AboutContent.tsx`
+  (클라이언트 — 본문)로 나뉘어 있습니다. 본문이 언어 전환에 반응해야 하는데 `metadata`는
+  서버에서만 내보낼 수 있어서입니다. 내용은 `data/about.ts`(`AboutData`)를 그대로 읽어
+  헤드라인 → bio → 스킬 → 언어 → 연락처 순으로 렌더링하며, 연락처는 여기 하단에 통합되어
+  있고 별도 Contact 페이지는 없습니다.
+
+### 다국어 (KR / EN)
+
+`components/LocaleProvider.tsx`가 언어 상태를 들고 있고 `app/layout.tsx`에서 앱 전체를 감쌉니다.
+덕분에 `/works` ↔ `/about` 이동에도 선택한 언어가 유지되고, 선택값은 `localStorage`에 저장되어
+새로고침 후에도 남습니다. `<html lang>`도 함께 갱신됩니다.
+
+- 언어가 필요한 컴포넌트는 `const { locale } = useLocale();`로 꺼내
+  `someText[locale]` 형태로 씁니다 (현재 `AboutContent.tsx`, `ProjectModal.tsx`).
+- 언어를 바꿀 때는 `selectLocale("ko" | "en")`을 씁니다. 토글이 아니라 **선택** 방식입니다.
+- **Works 목록의 프로젝트명은 언어와 무관하게 항상 영문**(`title.en`)입니다 — 시안 기준.
+- 첫 렌더는 서버와 동일하게 기본값(`ko`)으로 그리고, 저장된 값은 마운트 후 effect에서
+  반영합니다. 하이드레이션 불일치를 피하기 위한 것이니 이 순서를 바꾸지 마세요.
+
+#### 언어 메뉴 (`IconNav.tsx`)
+
+아이콘 3개 아래에 **KR·EN을 함께 표시**하고, 현재 언어에 채워진 배지를 붙입니다
+(상세 모달의 `chipFilled`와 같은 표현). 한쪽만 보여주는 토글로 바꾸지 마세요 — 시안 기준입니다.
+
+- 배지 배경은 상속된 글자색(`currentColor`)을 쓰므로 밝은/어두운 페이지에서 자동으로 대비가 잡힙니다.
+- **배지 안 글자색은 페이지가 `--nav-contrast`로 알려줘야 합니다.** 그 페이지의 배경색을 넣으세요.
+  밝은 배경 페이지(`about.module.scss`, `home.module.scss`)에 이미 선언되어 있고,
+  어두운 배경은 기본값($bgDark)으로 충분합니다. **IconNav를 쓰는 밝은 배경 페이지를 새로 만들면
+  이 변수를 반드시 선언**하세요. 빠뜨리면 배지 글자가 보이지 않습니다.
+- 한 요소에 `background-color: currentColor`와 `color`를 함께 주지 마세요. 배경이 새 글자색을
+  따라가 배경과 글자가 같은 색이 됩니다. 그래서 배지 글자는 안쪽 `span`에서만 색을 바꿉니다.
 
 ### 라우트 (전체)
 
@@ -100,6 +129,7 @@ npm start              # 빌드된 결과물 실행
 - 폰트: 영문 Poppins가 우선이고 Poppins에 없는 한글은 자동으로 Paperlogy로 폴백됩니다
   (`$fontMain: 'Poppins', 'Paperlogy', sans-serif;`). 특정 요소에서 영문도 Paperlogy로 강제하려면
   그 요소에 `font-family: 'Paperlogy', sans-serif;`를 직접 지정하세요 (예: 케이스 스터디 타이틀).
+  언어 전환 버튼(KR/EN)만 예외로 `Paytone One`을 씁니다.
 - 이 프로젝트에는 전역 `box-sizing: border-box`가 없습니다. `width: 100%`에 padding/border를
   더해 넘치는 요소는 그 컴포넌트에서 직접 `box-sizing: border-box`를 지정해야 합니다.
 
@@ -176,7 +206,6 @@ npm start              # 빌드된 결과물 실행
 
 ## 남은 작업
 
-- **다국어 적용** — 위 "기술 스택"에 적힌 `locale` 하드코딩을 실제 라우트 기반으로 교체.
 - **반응형 점검** — 320px ~ 1920px+ 전 구간에서 `clamp()`/`vw` 값이 자연스럽게 스케일되는지 확인.
 - 디자인 세부(색·폰트·간격)는 Figma 시안에서 확정됩니다. 구조와 구현에 집중하고,
   비주얼 디테일은 `design/` 폴더의 PNG 시안과 지시를 따르세요

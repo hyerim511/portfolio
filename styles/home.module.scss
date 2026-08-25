@@ -3,6 +3,8 @@
 .main {
     width: 100vw;
     height: 100vh;
+    // 언어 배지 안쪽 글자색 — 이 페이지 배경과 같아야 대비가 맞는다
+    --nav-contrast: #{$bgLight};
 
     /*
       배경을 .main에 직접 넣으면 z-index:-99인 .maintext가 그 아래로 가려진다.

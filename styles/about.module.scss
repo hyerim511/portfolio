@@ -5,6 +5,8 @@
     padding: 2.5rem 2.5rem 7rem; // 시안: 상·좌 모두 40px
     @include bgPattern($bgLight, 0.02);
     color: $ink;
+    // 언어 배지 안쪽 글자색 — 이 페이지 배경과 같아야 대비가 맞는다
+    --nav-contrast: #{$bgLight};
     font-family: $fontMain;
 }
 
